@@ -1,6 +1,0 @@
-{
-  "unauthorized": "Security Exception: Session Credentials Expired",
-  "notFound": "Requested Border Node Map Data Not Found",
-  "invalidCode": "HS Classification Analysis Halted: String Format Malformed",
-  "networkDown": "National Fiber Outage Detected: Fallback Standby Active"
-}

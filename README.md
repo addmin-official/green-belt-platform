@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Green Belt Platform — کەمەربەندی سەوز
 
-# Run and deploy your AI Studio app
+A focused pilot platform for food-waste collection, controlled composting, and environmental impact monitoring.
 
-This contains everything you need to run your app locally.
+## Status
 
-View your app in AI Studio: https://ai.studio/apps/1c301245-bdcb-411d-828a-ca0c0a06f6ff
+Prototype / 90-day pilot preparation. All displayed operational figures must be treated as demo or projected data until validated through field implementation.
 
-## Run Locally
+## Development
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+## Quality checks
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run typecheck
+npm run build
+```

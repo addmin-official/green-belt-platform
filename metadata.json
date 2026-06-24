@@ -1,8 +1,0 @@
-{
-  "name": "GREEN BELT INTELLIGENCE PLATFORM",
-  "description": "Smart circular economy and environmental intelligence platform for food waste recycling, quality compost production, and reforestation monitoring in partnership with Rwanga Foundation and DanChurchAid.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}
