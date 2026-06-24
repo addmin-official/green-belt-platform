@@ -10,8 +10,11 @@ import {
   LayoutDashboard,
   Leaf,
   LoaderCircle,
+  LogOut,
 } from 'lucide-react';
 
+import { AuthProvider, useAuth } from './auth/AuthProvider';
+import LoginPage from './pages/LoginPage';
 import PublicWebsite from './pages/PublicWebsite';
 
 const GreenBeltDashboard = lazy(
@@ -25,7 +28,11 @@ function normalizePath(pathname: string): RoutePath {
   return normalized === '/dashboard' ? '/dashboard' : '/';
 }
 
-function LoadingScreen() {
+function LoadingScreen({
+  text = 'پلاتفۆرمەکە ئامادە دەکرێت...',
+}: {
+  text?: string;
+}) {
   return (
     <div
       className="flex min-h-screen items-center justify-center bg-[#051109] text-emerald-100"
@@ -33,7 +40,7 @@ function LoadingScreen() {
     >
       <div className="flex items-center gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-950/50 px-5 py-4">
         <LoaderCircle className="h-5 w-5 animate-spin text-emerald-400" />
-        <span className="text-sm font-bold">پلاتفۆرمەکە ئامادە دەکرێت...</span>
+        <span className="text-sm font-bold">{text}</span>
       </div>
     </div>
   );
@@ -44,6 +51,13 @@ function DashboardPage({
 }: {
   navigate: (path: RoutePath) => void;
 }) {
+  const { user, signOutUser } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOutUser();
+    navigate('/');
+  };
+
   return (
     <div
       className="min-h-screen bg-[#051109] text-slate-100"
@@ -61,20 +75,36 @@ function DashboardPage({
               <h1 className="text-lg font-black text-white">
                 پلاتفۆرمی کەمەربەندی سەوز
               </h1>
+
               <p className="text-xs font-bold text-emerald-400">
                 داشبۆردی بەڕێوەبردنی پایلۆت
               </p>
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-bold transition hover:bg-white/10"
-          >
-            <ArrowLeft size={17} />
-            گەڕانەوە بۆ وێبسایت
-          </button>
+          <div className="flex items-center gap-2">
+            <span className="hidden max-w-48 truncate text-xs text-slate-400 md:block">
+              {user?.email}
+            </span>
+
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-xs font-bold transition hover:bg-white/10"
+            >
+              <ArrowLeft size={16} />
+              وێبسایت
+            </button>
+
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="inline-flex items-center gap-2 rounded-xl border border-red-400/15 bg-red-400/5 px-3 py-2.5 text-xs font-bold text-red-200 transition hover:bg-red-400/10"
+            >
+              <LogOut size={16} />
+              دەرچوون
+            </button>
+          </div>
         </div>
       </header>
 
@@ -85,7 +115,9 @@ function DashboardPage({
   );
 }
 
-export default function App() {
+function Application() {
+  const { user, loading } = useAuth();
+
   const [route, setRoute] = useState<RoutePath>(() =>
     normalizePath(window.location.pathname),
   );
@@ -118,6 +150,14 @@ export default function App() {
   };
 
   if (route === '/dashboard') {
+    if (loading) {
+      return <LoadingScreen text="ناسنامە پشکنین دەکرێت..." />;
+    }
+
+    if (!user) {
+      return <LoginPage onBack={() => navigate('/')} />;
+    }
+
     return (
       <Suspense fallback={<LoadingScreen />}>
         <DashboardPage navigate={navigate} />
@@ -141,5 +181,13 @@ export default function App() {
         چوونە ناو پلاتفۆرم
       </button>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <Application />
+    </AuthProvider>
   );
 }
