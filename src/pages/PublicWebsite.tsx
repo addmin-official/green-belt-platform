@@ -41,20 +41,20 @@ type Copy = {
 const copy: Record<Language, Copy> = {
   ku: {
     brand: 'کەمەربەندی سەوز',
-    tagline: 'پلاتفۆرمی پایلۆتی ئابووریی بازنەیی',
-    nav: ['دەربارە', 'مۆدێلی کار', 'پایلۆت', 'تەکنەلۆژیا', 'ڕووناکی'],
+    tagline: 'پلاتفۆرمی زیرەکی ئابووریی بازنەیی',
+    nav: ['دەربارە', 'شێوازی کار', 'هەڵسەنگاندن', 'تەکنەلۆژیا', 'ڕووناکی'],
     hero: {
       eyebrow: 'لە پاشماوەوە بۆ سەرچاوە',
       title: 'پاشماوەی خۆراک دەگۆڕین بۆ کۆمپوست، داتا و کاریگەریی سەوز.',
-      body: 'کەمەربەندی سەوز سیستەمێکی پایلۆتی کۆنترۆڵکراوە بۆ جیاکردنەوەی پاشماوەی خۆراک لە ڕێستورانتەکان، کۆکردنەوەی ڕێکخراو، کۆمپوستکردنی چاودێریکراو و تۆمارکردنی ئەنجامە ژینگەییەکان.',
-      primary: 'بینینی پلانی پایلۆت',
+      body: 'کەمەربەندی سەوز سیستەمێکی تاقیکردنەوەی کۆنترۆڵکراوە بۆ جیاکردنەوەی پاشماوەی خۆراک لە ڕێستورانتەکان، کۆکردنەوەی ڕێکخراو، کۆمپوستکردنی چاودێریکراو و تۆمارکردنی ئەنجامە ژینگەییەکان.',
+      primary: 'بینینی پلانی هەڵسەنگاندن',
       secondary: 'تێگەیشتن لە مۆدێلەکە',
-      notice: 'قۆناغی ئێستا: پڕۆتۆتایپ و ئامادەکاریی پایلۆت — هێشتا داتای مەیدانیی پشتڕاستکراو نییە.',
+      notice: 'قۆناغی ئێستا: نموونەی سەرەتایی و ئامادەکاریی هەڵسەنگاندن — هێشتا داتای مەیدانیی پشتڕاستکراو نییە.',
     },
     stats: [
-      { value: '٩٠ ڕۆژ', label: 'ماوەی پایلۆت', detail: 'تاقیکردنەوەی بچووک و پێوانەکراو' },
+      { value: '٩٠ ڕۆژ', label: 'ماوەی هەڵسەنگاندن', detail: 'تاقیکردنەوەی بچووک و پێوانەکراو' },
       { value: '٥–١٠', label: 'ڕێستورانتی ئامانج', detail: 'بەشداربوونی قۆناغی یەکەم' },
-      { value: '٣ دۆخ', label: 'داتای ڕوون', detail: 'Demo · Target · Verified' },
+      { value: '٣ دۆخ', label: 'داتای ڕوون', detail: 'نمایشی · ئامانج · پشتڕاستکراو' },
       { value: '١ ڕاپۆرت', label: 'ئەنجامی یەکگرتوو', detail: 'کۆکردنەوە، کۆمپوست و پێوانە' },
     ],
     problem: {
@@ -63,7 +63,7 @@ const copy: Record<Language, Copy> = {
       body: 'کاتێک پاشماوەی خۆراک بەبێ جیاکردنەوە و تۆمارکردن فڕێ دەدرێت، نرخ و کاریگەریی ڕاستەقینەکەی ون دەبێت. پڕۆژەکە لە یەکەم ڕۆژەوە پێوانەکردن و بەرپرسیارێتی دەخاتە ناو پرۆسەکە.',
       cards: [
         { title: 'جیاکردنەوەی لاواز', body: 'تێکەڵبوونی پاشماوەی ئۆرگانیک بە ماددەی ناپاک، کوالێتی کۆمپوست کەم دەکاتەوە.' },
-        { title: 'داتای نەبوو', body: 'بەبێ baseline و تۆمار، ناتوانرێت خەرجی، کەمکردنەوە و ئەنجام بسەلمێنرێت.' },
+        { title: 'داتای نەبوو', body: 'بەبێ بنچینەی پێوانە و تۆمار، ناتوانرێت خەرجی، کەمکردنەوە و ئەنجام بسەلمێنرێت.' },
         { title: 'زنجیرەی نادیار', body: 'کۆکردنەوە، گواستنەوە و پرۆسەکردن پێویستیان بە بەرپرسیاری ڕوون هەیە.' },
       ],
     },
@@ -74,28 +74,28 @@ const copy: Record<Language, Copy> = {
       steps: [
         { title: 'جیاکردنەوە لە سەرچاوە', body: 'ڕێستورانت پاشماوەی گونجاو لە ناو سندوقی داخراو جیا دەکاتەوە.' },
         { title: 'کۆکردنەوە و گواستنەوە', body: 'خشتەی کۆکردنەوە، کێش و دۆخی هەر بارێک تۆمار دەکرێت.' },
-        { title: 'کۆمپوستکردنی کۆنترۆڵکراو', body: 'گەرمی، شێداری، کات و دۆخی batch بە شێوەیەکی سادە چاودێری دەکرێن.' },
+        { title: 'کۆمپوستکردنی کۆنترۆڵکراو', body: 'گەرمی، شێداری، کات و دۆخی گەڕی بەرهەمهێنان بە شێوەیەکی سادە چاودێری دەکرێن.' },
         { title: 'ڕاپۆرت و بەکارهێنان', body: 'کۆمپوست و داتاکان بۆ هەڵسەنگاندنی کوالێتی و کاریگەری کۆدەکرێنەوە.' },
       ],
     },
     pilot: {
-      kicker: 'پایلۆتی ٩٠ ڕۆژە',
+      kicker: 'هەڵسەنگاندنی ٩٠ ڕۆژە',
       title: 'سەرەتا بچووک، بەڵام بەڵگەدار.',
       body: 'ئامانجی قۆناغی یەکەم ئەوە نییە ژمارەی گەورە بسەلمێنێت؛ ئامانج ئەوەیە مۆدێلێکی سەلامەت، جێبەجێکراو و گونجاو بۆ فراوانکردن تاقی بکرێتەوە.',
       phases: [
         { label: 'قۆناغی ١', value: 'ڕۆژی ١–١٥', body: 'هەڵبژاردنی شوێن، baseline، ڕاهێنان و دابینکردنی سندوق.' },
-        { label: 'قۆناغی ٢', value: 'ڕۆژی ١٦–٧٥', body: 'کۆکردنەوەی ڕێکخراو، چاودێری batch و چارەسەری کێشەکان.' },
+        { label: 'قۆناغی ٢', value: 'ڕۆژی ١٦–٧٥', body: 'کۆکردنەوەی ڕێکخراو، چاودێری گەڕی بەرهەمهێنان و چارەسەری کێشەکان.' },
         { label: 'قۆناغی ٣', value: 'ڕۆژی ٧٦–٩٠', body: 'هەڵسەنگاندن، تاقیکردنەوەی کوالێتی و ڕاپۆرتی کۆتایی.' },
       ],
     },
     tech: {
       kicker: 'پلاتفۆرمی دیجیتاڵی',
       title: 'تەکنەلۆژیا بۆ تۆمارکردن و بڕیاردان — نە بۆ بانگەشە.',
-      body: 'سیستەمەکە لە قۆناغی پایلۆتدا سادە و بەکارهێنەر-محورە؛ هەر تایبەتمەندییەک دەبێت کێشەیەکی ڕاستەقینە چارەسەر بکات.',
+      body: 'سیستەمەکە لە قۆناغی هەڵسەنگاندندا سادە و بەکارهێنەر-محورە؛ هەر تایبەتمەندییەک دەبێت کێشەیەکی ڕاستەقینە چارەسەر بکات.',
       items: [
         { title: 'تۆماری شوێن و بار', body: 'ناسنامەی ڕێستورانت، کات، کێش و دۆخی کۆکردنەوە.' },
-        { title: 'چاودێری batch', body: 'گەرمی، شێداری، ماوە و تێبینییە فنییەکان.' },
-        { title: 'داشبۆردی پایلۆت', body: 'پێوانە سەرەکییەکان بە نیشانی Demo، Target یان Verified.' },
+        { title: 'چاودێری گەڕی بەرهەمهێنان', body: 'گەرمی، شێداری، ماوە و تێبینییە فنییەکان.' },
+        { title: 'تەختەی چاودێری هەڵسەنگاندن', body: 'پێوانە سەرەکییەکان بە نیشانی نمایشی، ئامانج یان پشتڕاستکراو.' },
         { title: 'ڕاپۆرتی دابەزێنراو', body: 'پوختەی مانگانە بۆ هاوبەش و لایەنی چاودێر.' },
       ],
     },
@@ -104,16 +104,16 @@ const copy: Record<Language, Copy> = {
       title: 'هیچ ژمارەیەک بەبێ دۆخ و سەرچاوە پیشان نادرێت.',
       body: 'لە قۆناغی پڕۆتۆتایپدا ژمارەکان دەبێت بە ڕوونی لە نێوان پێشبینی، ئامانج و ئەنجامی مەیدانی جیا بکرێنەوە.',
       items: [
-        'هەموو داتای نمایشی بە Demo نیشان دەدرێت.',
-        'هەموو ئامانجێک بە Target نیشان دەدرێت.',
-        'تەنها داتای پشکنراو بە Verified بڵاودەکرێتەوە.',
-        'هیچ ادعای CO₂ یان ژمارەی درەخت بەبێ میتۆدۆلۆجی بڵاوناکرێتەوە.',
+        'هەموو داتای نمایشی بە «نمایشی» نیشان دەدرێت.',
+        'هەموو ئامانجێک بە «ئامانج» نیشان دەدرێت.',
+        'تەنها داتای پشکنراو بە «پشتڕاستکراو» بڵاودەکرێتەوە.',
+        'هیچ بانگەشەیەکی دووئۆکسیدی کاربۆن یان ژمارەی درەخت بەبێ میتۆدۆلۆجی بڵاوناکرێتەوە.',
       ],
     },
     partners: {
-      kicker: 'هاوبەشی پایلۆت',
+      kicker: 'هاوبەشی هەڵسەنگاندن',
       title: 'پڕۆژەکە بە هاوکاری سەرکەوتوو دەبێت.',
-      body: 'پایلۆتەکە پێویستی بە هاوبەشی ڕێستورانت، پسپۆڕی ژینگە، لایەنی کشتوکاڵ و دامەزراوەی پشتگیر هەیە.',
+      body: 'هەڵسەنگاندنەکە پێویستی بە هاوبەشی ڕێستورانت، پسپۆڕی ژینگە، لایەنی کشتوکاڵ و دامەزراوەی پشتگیر هەیە.',
       list: ['ڕێستورانت و چێشتخانە', 'پسپۆڕ و ڕاوێژکاری ژینگە', 'زانکۆ و تاقیگە', 'ڕێکخراو و دامەزراوەی پشتگیر'],
       action: 'دەستپێکردنی گفتوگۆی هاوبەشی',
     },
@@ -121,15 +121,15 @@ const copy: Record<Language, Copy> = {
       kicker: 'پرسیاری باو',
       title: 'وەڵامی ڕوون بۆ خاڵە سەرەکییەکان.',
       items: [
-        { q: 'ئایا پڕۆژەکە ئێستا کار دەکات؟', a: 'نەخێر. ئێستا لە قۆناغی پڕۆتۆتایپ و ئامادەکاریی پایلۆتدایە؛ جێبەجێکردنی مەیدانی هێشتا دەست پێ نەکردووە.' },
-        { q: 'ئایا ژمارەکانی داشبۆرد ڕاستەقینەن؟', a: 'تەنها ئەو ژمارانەی بە Verified نیشان دەدرێن داتای مەیدانی دەبن. لە قۆناغی ئێستا زۆربەی ژمارەکان Demo یان Target ـن.' },
+        { q: 'ئایا پڕۆژەکە ئێستا کار دەکات؟', a: 'نەخێر. ئێستا لە قۆناغی قۆناغی نموونەی سەرەتایی و ئامادەکاریی هەڵسەنگاندندایە؛ جێبەجێکردنی مەیدانی هێشتا دەست پێ نەکردووە.' },
+        { q: 'ئایا ژمارەکانی داشبۆرد ڕاستەقینەن؟', a: 'تەنها ئەو ژمارانەی بە «پشتڕاستکراو» نیشان دەدرێن داتای مەیدانی دەبن. لە قۆناغی ئێستا زۆربەی ژمارەکان نمایشی یان ئامانجن.' },
         { q: 'ئایا کۆمپوست لە هەر شوێنێک دروست دەکرێت؟', a: 'نەخێر. شوێن، پاکوخاوێنی، ڕێنمایی ژینگەیی و پرۆسەی کۆنترۆڵکراو پێویستن پێش دەستپێکردنی هەر کارێکی مەیدانی.' },
-        { q: 'پایلۆت چی دەسەلمێنێت؟', a: 'دەسەلمێنێت ئایا مۆدێلی جیاکردنەوە، کۆکردنەوە، کۆمپوستکردن و ڕاپۆرتکردن لە ڕووی کردار و خەرجییەوە جێبەجێکراوە یان نا.' },
+        { q: 'هەڵسەنگاندنەکە چی دەسەلمێنێت؟', a: 'دەسەلمێنێت ئایا مۆدێلی جیاکردنەوە، کۆکردنەوە، کۆمپوستکردن و ڕاپۆرتکردن لە ڕووی کردار و خەرجییەوە جێبەجێکراوە یان نا.' },
       ],
     },
     footer: {
-      summary: 'کەمەربەندی سەوز — چارەسەرێکی پایلۆتی، ڕوون و پێوانەکراو بۆ پاشماوەی خۆراک.',
-      note: 'هەموو داتاکانی ئەم وێبسایتە لە قۆناغی ئێستادا نمایشی یان ئامانجی پایلۆتن، مەگەر بە Verified نیشان درابن.',
+      summary: 'کەمەربەندی سەوز — چارەسەرێکی تاقیکراوە، ڕوون و پێوانەکراو بۆ پاشماوەی خۆراک.',
+      note: 'هەموو داتاکانی ئەم وێبسایتە لە قۆناغی ئێستادا نمایشی یان ئامانجی هەڵسەنگاندنن، مەگەر بە «پشتڕاستکراو» نیشان درابن.',
     },
   },
   ar: {
@@ -139,7 +139,7 @@ const copy: Record<Language, Copy> = {
     stats: [
       { value: '90 يوماً', label: 'مدة التجربة', detail: 'اختبار محدود وقابل للقياس' },
       { value: '5–10', label: 'مطاعم مستهدفة', detail: 'المرحلة الأولى' },
-      { value: '3 حالات', label: 'بيانات واضحة', detail: 'Demo · Target · Verified' },
+      { value: '3 حالات', label: 'بيانات واضحة', detail: 'نمایشی · ئامانج · پشتڕاستکراو' },
       { value: 'تقرير واحد', label: 'نتيجة موحدة', detail: 'جمع وتسميد وقياس' },
     ],
     problem: { kicker: 'المشكلة', title: 'مخلفات الطعام تكلفة ومخاطر بيئية في آن واحد.', body: 'عندما تُرمى المخلفات دون فرز أو توثيق تضيع قيمتها ويصعب قياس أثرها. يبدأ المشروع من القياس والمسؤولية منذ اليوم الأول.', cards: [
@@ -183,7 +183,7 @@ const copy: Record<Language, Copy> = {
     stats: [
       { value: '90 days', label: 'Pilot duration', detail: 'Small and measurable test' },
       { value: '5–10', label: 'Target restaurants', detail: 'First-stage participation' },
-      { value: '3 states', label: 'Clear data status', detail: 'Demo · Target · Verified' },
+      { value: '3 states', label: 'Clear data status', detail: 'نمایشی · ئامانج · پشتڕاستکراو' },
       { value: '1 report', label: 'Unified outcome', detail: 'Collection, compost and measures' },
     ],
     problem: { kicker: 'The problem', title: 'Food waste is both a cost and an environmental risk.', body: 'When food waste is discarded without separation or records, its real cost and value disappear. Green Belt introduces measurement and accountability from day one.', cards: [
@@ -289,7 +289,7 @@ export default function App() {
                 <div className="visual-stats"><div><strong>90</strong><small>DAYS</small></div><div><strong>5–10</strong><small>SITES</small></div><div><strong>3</strong><small>DATA STATES</small></div></div>
               </div>
               <div className="float-card top"><ShieldCheck size={19} /><span>Method before claims</span></div>
-              <div className="float-card bottom"><Database size={19} /><span>Demo · Target · Verified</span></div>
+              <div className="float-card bottom"><Database size={19} /><span>نمایشی · ئامانج · پشتڕاستکراو</span></div>
             </motion.div>
           </div>
 
@@ -300,18 +300,35 @@ export default function App() {
 
         <section id="model" className="section"><div className="container"><SectionHeading kicker={t.model.kicker} title={t.model.title} body={t.model.body} /><div className="grid four">{t.model.steps.map((item, index) => { const Icon = stepIcons[index]; return <article className="step" key={item.title}><b>0{index + 1}</b><span className="icon"><Icon size={23} /></span><h3>{item.title}</h3><p>{item.body}</p></article>; })}</div></div></section>
 
-        <section id="pilot" className="section pilot"><div className="container pilot-grid"><div><SectionHeading kicker={t.pilot.kicker} title={t.pilot.title} body={t.pilot.body} /><div className="pilot-chip"><Sprout size={19} /><span>Controlled pilot · Erbil focus · Evidence first</span></div></div><div className="timeline">{t.pilot.phases.map((item, index) => <article key={item.value}><div className="timeline-number">{index + 1}</div><div><small>{item.label}</small><h3>{item.value}</h3><p>{item.body}</p></div></article>)}</div></div></section>
+        <section id="pilot" className="section pilot"><div className="container pilot-grid"><div><SectionHeading kicker={t.pilot.kicker} title={t.pilot.title} body={t.pilot.body} /><div className="pilot-chip"><Sprout size={19} /><span>{language === 'ku' ? 'هەڵسەنگاندنی کۆنترۆڵکراو · هەولێر · بەڵگە لە پێشەوە' : language === 'ar' ? 'تقييم منظم · أربيل · الدليل أولاً' : 'Controlled assessment · Erbil focus · Evidence first'}</span></div></div><div className="timeline">{t.pilot.phases.map((item, index) => <article key={item.value}><div className="timeline-number">{index + 1}</div><div><small>{item.label}</small><h3>{item.value}</h3><p>{item.body}</p></div></article>)}</div></div></section>
 
         <section id="technology" className="section surface"><div className="container"><SectionHeading kicker={t.tech.kicker} title={t.tech.title} body={t.tech.body} /><div className="grid four">{t.tech.items.map((item, index) => { const Icon = techIcons[index]; return <article className="card tech" key={item.title}><span className="icon"><Icon size={22} /></span><h3>{item.title}</h3><p>{item.body}</p></article>; })}</div></div></section>
 
-        <section id="transparency" className="section trust"><div className="container trust-grid"><div><SectionHeading kicker={t.trust.kicker} title={t.trust.title} body={t.trust.body} /><div className="legend"><span className="demo">Demo</span><span className="target">Target</span><span className="verified">Verified</span></div></div><div className="check-list">{t.trust.items.map((item) => <div key={item}><CheckCircle2 size={20} /><span>{item}</span></div>)}</div></div></section>
+        <section id="transparency" className="section trust"><div className="container trust-grid"><div><SectionHeading kicker={t.trust.kicker} title={t.trust.title} body={t.trust.body} /><div className="legend">
+      <span className="demo">
+        {language === 'ku' ? 'نمایشی' : language === 'ar' ? 'تجريبي' : 'Demo'}
+      </span>
+      <span className="target">
+        {language === 'ku' ? 'ئامانج' : language === 'ar' ? 'هدف' : 'Target'}
+      </span>
+      <span className="verified">
+        {language === 'ku' ? 'پشتڕاستکراو' : language === 'ar' ? 'موثق' : 'Verified'}
+      </span>
+    </div></div><div className="check-list">{t.trust.items.map((item) => <div key={item}><CheckCircle2 size={20} /><span>{item}</span></div>)}</div></div></section>
 
         <section className="section"><div className="container partner-card"><div><span className="section-kicker">{t.partners.kicker}</span><h2>{t.partners.title}</h2><p>{t.partners.body}</p></div><div className="partner-list">{t.partners.list.map((item) => <span key={item}><CheckCircle2 size={17} />{item}</span>)}</div><button className="button light" onClick={() => go('faq')} type="button">{t.partners.action}<ArrowLeft size={18} /></button></div></section>
 
         <section id="faq" className="section surface"><div className="container faq-grid"><SectionHeading kicker={t.faq.kicker} title={t.faq.title} /><div className="faq-list">{t.faq.items.map((item, index) => <article className={faqOpen === index ? 'open' : ''} key={item.q}><button type="button" onClick={() => setFaqOpen(faqOpen === index ? -1 : index)}><span>{item.q}</span><ChevronDown size={20} /></button><AnimatePresence initial={false}>{faqOpen === index ? <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}><p>{item.a}</p></motion.div> : null}</AnimatePresence></article>)}</div></div></section>
       </main>
 
-      <footer className="footer"><div className="container footer-grid"><div className="brand footer-brand"><span className="brand-mark"><Leaf size={22} /></span><span><strong>{t.brand}</strong><small>{t.footer.summary}</small></span></div><div className="footer-note"><ShieldCheck size={18} /><span>{t.footer.note}</span></div><span className="copyright">© {year} Green Belt Pilot</span></div></footer>
+      <footer className="footer"><div className="container footer-grid"><div className="brand footer-brand"><span className="brand-mark"><Leaf size={22} /></span><span><strong>{t.brand}</strong><small>{t.footer.summary}</small></span></div><div className="footer-note"><ShieldCheck size={18} /><span>{t.footer.note}</span></div><span className="copyright">
+      © {year}{' '}
+      {language === 'ku'
+        ? 'کەمەربەندی سەوز'
+        : language === 'ar'
+          ? 'الحزام الأخضر'
+          : 'Green Belt'}
+    </span></div></footer>
     </div>
   );
 }
