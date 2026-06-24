@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
+import TechHeroVisual from '../components/website/TechHeroVisual';
 
 type Language = 'ku' | 'ar' | 'en';
 
@@ -83,7 +84,7 @@ const copy: Record<Language, Copy> = {
       title: 'سەرەتا بچووک، بەڵام بەڵگەدار.',
       body: 'ئامانجی قۆناغی یەکەم ئەوە نییە ژمارەی گەورە بسەلمێنێت؛ ئامانج ئەوەیە مۆدێلێکی سەلامەت، جێبەجێکراو و گونجاو بۆ فراوانکردن تاقی بکرێتەوە.',
       phases: [
-        { label: 'قۆناغی ١', value: 'ڕۆژی ١–١٥', body: 'هەڵبژاردنی شوێن، baseline، ڕاهێنان و دابینکردنی سندوق.' },
+        { label: 'قۆناغی ١', value: 'ڕۆژی ١–١٥', body: 'هەڵبژاردنی شوێن، بنچینەی پێوانە، ڕاهێنان و دابینکردنی سندوق.' },
         { label: 'قۆناغی ٢', value: 'ڕۆژی ١٦–٧٥', body: 'کۆکردنەوەی ڕێکخراو، چاودێری گەڕی بەرهەمهێنان و چارەسەری کێشەکان.' },
         { label: 'قۆناغی ٣', value: 'ڕۆژی ٧٦–٩٠', body: 'هەڵسەنگاندن، تاقیکردنەوەی کوالێتی و ڕاپۆرتی کۆتایی.' },
       ],
@@ -102,7 +103,7 @@ const copy: Record<Language, Copy> = {
     trust: {
       kicker: 'ڕووناکی و متمانە',
       title: 'هیچ ژمارەیەک بەبێ دۆخ و سەرچاوە پیشان نادرێت.',
-      body: 'لە قۆناغی پڕۆتۆتایپدا ژمارەکان دەبێت بە ڕوونی لە نێوان پێشبینی، ئامانج و ئەنجامی مەیدانی جیا بکرێنەوە.',
+      body: 'لە قۆناغی نموونەی سەرەتاییدا ژمارەکان دەبێت بە ڕوونی لە نێوان پێشبینی، ئامانج و ئەنجامی مەیدانی جیا بکرێنەوە.',
       items: [
         'هەموو داتای نمایشی بە «نمایشی» نیشان دەدرێت.',
         'هەموو ئامانجێک بە «ئامانج» نیشان دەدرێت.',
@@ -282,15 +283,7 @@ export default function App() {
               <div className="notice"><span className="pulse" />{t.hero.notice}</div>
             </motion.div>
 
-            <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.75, delay: 0.1 }}>
-              <div className="dashboard-card">
-                <div className="dashboard-head"><div><small>PILOT FLOW</small><strong>{t.brand}</strong></div><span>PROTOTYPE</span></div>
-                <div className="flow-row">{[Building2, Truck, Recycle, TreePine].map((Icon, index) => <div className="flow-item" key={index}><span><Icon size={25} /></span>{index < 3 ? <i /> : null}</div>)}</div>
-                <div className="visual-stats"><div><strong>90</strong><small>DAYS</small></div><div><strong>5–10</strong><small>SITES</small></div><div><strong>3</strong><small>DATA STATES</small></div></div>
-              </div>
-              <div className="float-card top"><ShieldCheck size={19} /><span>Method before claims</span></div>
-              <div className="float-card bottom"><Database size={19} /><span>نمایشی · ئامانج · پشتڕاستکراو</span></div>
-            </motion.div>
+            <TechHeroVisual language={language} />
           </div>
 
           <div className="container stats-grid">{t.stats.map((item, index) => <motion.article key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }}><strong>{item.value}</strong><span>{item.label}</span><small>{item.detail}</small></motion.article>)}</div>
