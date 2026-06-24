@@ -1,21 +1,40 @@
-# Green Belt Platform — کەمەربەندی سەوز
+# Green Belt Platform
 
-A focused pilot platform for food-waste collection, controlled composting, and environmental impact monitoring.
+A multilingual, mobile-first public website for the Green Belt food-waste circular-economy pilot.
 
-## Status
+## Current stage
 
-Prototype / 90-day pilot preparation. All displayed operational figures must be treated as demo or projected data until validated through field implementation.
+Prototype and pilot preparation. No field data is presented as verified unless explicitly labelled `Verified`.
 
-## Development
+## Stack
+
+- React 19
+- TypeScript
+- Vite 6
+- Tailwind CSS 4
+- Motion
+- Lucide icons
+- pnpm
+
+## Local development
 
 ```bash
-npm install
-npm run dev
+corepack enable
+pnpm install
+pnpm run dev
 ```
 
 ## Quality checks
 
 ```bash
-npm run typecheck
-npm run build
+pnpm run typecheck
+pnpm run build
 ```
+
+## Data language
+
+Every metric must use one of these states:
+
+- `Demo` — illustrative data only
+- `Target` — planned pilot outcome
+- `Verified` — checked field data with a documented source
