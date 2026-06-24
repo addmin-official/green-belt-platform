@@ -1,0 +1,21 @@
+{
+  "title": "IRAQ DIGITAL GATEWAY",
+  "subtitle": "SOVEREIGN NATIONAL INFRASTRUCTURE",
+  "location": "Official Trade & Customs Intelligence System",
+  "securityAccess": "Access Clear: Zero-Trust Authorized Officer",
+  "langSelector": "Language",
+  "backToDefault": "Reset to Sovereign Baseline",
+  "currencyIQDUSD": "IQD (Iraqi Dinars) & USD Equivalent",
+  "save": "Save",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "delete": "Delete",
+  "edit": "Edit",
+  "view": "View",
+  "status": "Status",
+  "actions": "Actions",
+  "all": "All",
+  "loading": "Loading...",
+  "success": "Success",
+  "error": "Error"
+}

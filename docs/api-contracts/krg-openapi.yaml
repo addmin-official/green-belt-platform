@@ -1,0 +1,317 @@
+openapi: 3.0.3
+info:
+  title: Iraq Digital Gateway - Kurdistan Regional Government (KRG) API Contract Specification
+  description: Sovereign Technical API integration contract layer for KRG (Erbil) autonomous ministries and platform providers. This spec manages sovereign Border, Customs, Revenue, Trade, Transparency, Identity, Workforce, Security, Intelligence, Audit, Ledger, and Workflow domains.
+  version: 1.0.0
+servers:
+  - url: http://placeholder-krg-gateway-service:3000/api/v1
+    description: KRG Production Gateway Placeholder (Configured via env variables)
+paths:
+  # Border Domain
+  /health:
+    get:
+      summary: Health check endpoint for KRG domain provider service
+      responses:
+        '200':
+          description: System healthy
+  /readiness:
+    get:
+      summary: Readiness check endpoint for KRG domain provider service
+      responses:
+        '200':
+          description: Service ready to handle traffic
+  /metadata:
+    get:
+      summary: Metadata retrieve endpoint
+      responses:
+        '200':
+          description: KRG scope metadata overview
+  /audit-events:
+    get:
+      summary: KRG audit events access log
+      responses:
+        '200':
+          description: Audit events list
+  /sync-status:
+    get:
+      summary: KRG sync state with central registries
+      responses:
+        '200':
+          description: Synchronization status details
+
+  /border/gates:
+    get:
+      summary: Secure listing of post-matching KRG border coordinates and gates
+      responses:
+        '200':
+          description: Returns raw Kurdistan Regional Government gate descriptors
+  /border/events:
+    get:
+      summary: Live KRG border gate crossing threat and status events
+      responses:
+        '200':
+          description: Sovereign KRG border crossing event stream
+  /border/traffic:
+    get:
+      summary: Consolidated KRG import-export cargo traffic metrics
+      responses:
+        '200':
+          description: Traffic analytics and queue statuses
+  /border/risk:
+    get:
+      summary: Risk analysis signals for cargo/vehicles entering KRG boundaries
+      responses:
+        '200':
+          description: Security and regulatory risk signals
+
+  # Customs Domain
+  /customs/declarations:
+    get:
+      summary: KRG customs declarations regional search
+      responses:
+        '200':
+          description: KRG-only raw customs declarations
+  /customs/tariffs:
+    get:
+      summary: Autonomous KRG customs tariff schedule rules
+      responses:
+        '200':
+          description: Official regional tariff codes and rate limits
+  /customs/audit:
+    get:
+      summary: Audit log containing tariff assessment discrepancies
+      responses:
+        '200':
+          description: Tariff assessment audits
+  /customs/reconciliation:
+    get:
+      summary: KRG customs regional reconciliation aggregates
+      responses:
+        '200':
+          description: Reconciled declaration matches
+
+  # Revenue Domain
+  /revenue/ledger:
+    get:
+      summary: KRG raw revenue collection entries ledger
+      responses:
+        '200':
+          description: KRG regional financial collections ledger
+  /revenue/collections:
+    get:
+      summary: Active collection point registries and daily balances
+      responses:
+        '200':
+          description: Revenue stream distribution
+  /revenue/leakage:
+    get:
+      summary: AI-modeled revenue leakage anomalies detected at KRG points
+      responses:
+        '200':
+          description: Revenue integrity alerts
+  /revenue/reconciliation:
+    get:
+      summary: Intra-KRG regional revenue netting checks
+      responses:
+        '200':
+          description: Reconciliation audit results
+
+  # Trade Domain
+  /trade/licenses:
+    get:
+      summary: Valid KRG import-export trading licenses
+      responses:
+        '200':
+          description: KRG trade licenses registry
+  /trade/imports:
+    get:
+      summary: Active KRG import manifest index
+      responses:
+        '200':
+          description: Real KRG import logs
+  /trade/exports:
+    get:
+      summary: Active KRG export manifest index
+      responses:
+        '200':
+          description: Real KRG export logs
+  /trade/corridors:
+    get:
+      summary: Registered KRG secure logistics transport corridors
+      responses:
+        '200':
+          description: KRG regional logistics corridor segments
+
+  # Transparency (Integrity) Domain
+  /integrity/cases:
+    get:
+      summary: Active KRG regional anti-corruption inquiries and audits
+      responses:
+        '200':
+          description: Case list
+  /integrity/evidence:
+    get:
+      summary: Secured evidence manifest metadata hashes
+      responses:
+        '200':
+          description: Evidence index
+  /integrity/risk-signals:
+    get:
+      summary: Systemic anti-corruption alerts and bribe markers for KRG
+      responses:
+        '200':
+          description: Corruption risk metrics
+  /integrity/audit-trails:
+    get:
+      summary: Immutable regional administration audit trails
+      responses:
+        '200':
+          description: Audit history
+
+  # Identity Domain
+  /identity/records:
+    get:
+      summary: Regional civil status and resident registry database
+      responses:
+        '200':
+          description: KRG resident card data registry
+  /identity/verification:
+    post:
+      summary: Secure digital identity verification processing inside KRG
+      responses:
+        '200':
+          description: Secure match/no-match result
+  /identity/credentials:
+    get:
+      summary: KRG regional digital PKI certificate indices
+      responses:
+        '200':
+          description: Active identity credential credentials
+  /identity/lifecycle:
+    get:
+      summary: Track KRG regional registry lifecycle
+      responses:
+        '200':
+          description: KRG registry lifecycle logs
+
+  # Workforce Domain
+  /workforce/roster:
+    get:
+      summary: KRG public sector and regional border workforce rosters
+      responses:
+        '200':
+          description: Active regional workforce registry
+  /workforce/shifts:
+    get:
+      summary: Shift plans for remote KRG border crossing installations
+      responses:
+        '200':
+          description: Shift schedule plan
+  /workforce/assignments:
+    get:
+      summary: Deployments of specialized regional security agents and examiners
+      responses:
+        '200':
+          description: Assignment tracking
+  /workforce/certifications:
+    get:
+      summary: Regional security clearances and professional credentials index
+      responses:
+        '200':
+          description: Certified regional agent indices
+
+  # Security Domain
+  /security/sessions:
+    get:
+      summary: Live digital session monitoring lists for KRG
+      responses:
+        '200':
+          description: Session tracking
+  /security/devices:
+    get:
+      summary: Authorized KRG regional network hardware terminals registry
+      responses:
+        '200':
+          description: Terminal secure keys
+  /security/mfa:
+    post:
+      summary: Multi-factor token audits
+      responses:
+        '200':
+          description: Verification success logs
+  /security/audit:
+    get:
+      summary: KRG-only regional cybersecurity logs and intrusion traces
+      responses:
+        '200':
+          description: Defensive security events
+
+  # Intelligence Domain
+  /intelligence/threats:
+    get:
+      summary: Real-time strategic regional threats logged inside KRG
+      responses:
+        '200':
+          description: KRG raw regional threat metrics
+  /intelligence/alerts:
+    get:
+      summary: Tactical intelligence alerts broadcast index inside KRG
+      responses:
+        '200':
+          description: Autonomous regional alerts index
+  /intelligence/watchlists:
+    get:
+      summary: Kurdistan Region regional border crossing watchlist
+      responses:
+        '200':
+          description: KRG border enforcement watchlist
+  /intelligence/fusion:
+    get:
+      summary: Autonomous regional threat intelligence models output
+      responses:
+        '200':
+          description: Fusion modeling outputs
+
+  # KRG Digital Service Standards Compliance Endpoints
+  /krdpass/metadata:
+    get:
+      summary: Get KRDPASS OIDC integration metadata (Status NOT_CONFIGURED)
+      responses:
+        '200':
+          description: Standard OIDC config readiness descriptors
+  /krdpass/readiness:
+    get:
+      summary: Get KRDPASS service connectivity probe status
+      responses:
+        '200':
+          description: Honest provider status reporting
+  /brs/metadata:
+    get:
+      summary: Get KRG Business Registry Service metadata specifications
+      responses:
+        '200':
+          description: BRS Joint integration mapping constraints
+  /brs/readiness:
+    get:
+      summary: Get BRS service configuration state
+      responses:
+        '200':
+          description: Honest BRS provider state
+
+  /settlement/readiness:
+    get:
+      summary: KRG settlement readiness status
+      deprecated: true
+      responses:
+        '200':
+          description: Settlement policy engine configuration and KRG data provider status check
+
+  /border-settlement/readiness:
+    get:
+      summary: KRG border-specific revenue settlement readiness status
+      responses:
+        '200':
+          description: Border settlement policy engine configurations, KRG border gate data provider state and verification checks
+
+
+

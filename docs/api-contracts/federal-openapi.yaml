@@ -1,0 +1,290 @@
+openapi: 3.0.3
+info:
+  title: Iraq Digital Gateway - Federal API Contract Specification
+  description: Sovereign Technical API integration contract layer for Federal Iraq (Baghdad) ministries and platform providers. This spec manages sovereign Border, Customs, Revenue, Trade, Transparency, Identity, Workforce, Security, Intelligence, Audit, Ledger, and Workflow domains.
+  version: 1.0.0
+servers:
+  - url: http://placeholder-federal-gateway-service:3000/api/v1
+    description: Federal Production Gateway Placeholder (Configured via env variables)
+paths:
+  # Border Domain
+  /health:
+    get:
+      summary: Health check endpoint for the domain provider service
+      responses:
+        '200':
+          description: System healthy
+  /readiness:
+    get:
+      summary: Readiness check endpoint for the domain provider service
+      responses:
+        '200':
+          description: Service ready to handle traffic
+  /metadata:
+    get:
+      summary: Metadata retrieve endpoint
+      responses:
+        '200':
+          description: Federal scope metadata overview
+  /audit-events:
+    get:
+      summary: Audit events access log
+      responses:
+        '200':
+          description: Audit events list
+  /sync-status:
+    get:
+      summary: Sync state with central registries
+      responses:
+        '200':
+          description: Synchronization status details
+
+  /border/gates:
+    get:
+      summary: Secure listing of federal border crossing gates
+      responses:
+        '200':
+          description: Returns raw federal gateway descriptors
+  /border/events:
+    get:
+      summary: Live federal border gate crossing threat and status events
+      responses:
+        '200':
+          description: Sovereign gate event stream
+  /border/traffic:
+    get:
+      summary: Consolidated federal import-export cargo and passenger traffic metrics
+      responses:
+        '200':
+          description: Traffic analytics and queue statuses
+  /border/risk:
+    get:
+      summary: Risk analysis signals for cargo/vehicles entering Federal boundaries
+      responses:
+        '200':
+          description: Security and regulatory risk signals
+
+  # Customs Domain
+  /customs/declarations:
+    get:
+      summary: Federal customs declarations storage search
+      responses:
+        '200':
+          description: Federal-only raw customs declarations
+  /customs/tariffs:
+    get:
+      summary: National federal customs tariff schedule rules
+      responses:
+        '200':
+          description: Official tariff codes and rate limits
+  /customs/audit:
+    get:
+      summary: Audit log containing tariff assessment discrepancies
+      responses:
+        '200':
+          description: Tariff assessment audits
+  /customs/reconciliation:
+    get:
+      summary: Internal customs reconciliation aggregates
+      responses:
+        '200':
+          description: Reconciled declaration matches
+
+  # Revenue Domain
+  /revenue/ledger:
+    get:
+      summary: Federal raw revenue collection entries ledger
+      responses:
+        '200':
+          description: Treasury financial collections ledger
+  /revenue/collections:
+    get:
+      summary: Active collection point registries and daily balances
+      responses:
+        '200':
+          description: Revenue stream distribution
+  /revenue/leakage:
+    get:
+      summary: AI-modeled revenue leakage anomalies detected at federal points
+      responses:
+        '200':
+          description: Revenue integrity alerts
+  /revenue/reconciliation:
+    get:
+      summary: Intra-federal revenue netting checks
+      responses:
+        '200':
+          description: Reconciliation audit results
+
+  # Trade Domain
+  /trade/licenses:
+    get:
+      summary: Valid federal import-export trading licenses
+      responses:
+        '200':
+          description: Trade business licenses registry
+  /trade/imports:
+    get:
+      summary: Active federal import manifest index
+      responses:
+        '200':
+          description: Real import logs
+  /trade/exports:
+    get:
+      summary: Active federal export manifest index
+      responses:
+        '200':
+          description: Real export logs
+  /trade/corridors:
+    get:
+      summary: Registered secure logistics transport corridors
+      responses:
+        '200':
+          description: National logistics corridor segments
+
+  # Transparency (Integrity) Domain
+  /integrity/cases:
+    get:
+      summary: Active federal anti-corruption inquiries and audits
+      responses:
+        '200':
+          description: Case list
+  /integrity/evidence:
+    get:
+      summary: Secured evidence manifest metadata hashes
+      responses:
+        '200':
+          description: Evidence index
+  /integrity/risk-signals:
+    get:
+      summary: Systemic anti-corruption alerts and bribe markers
+      responses:
+        '200':
+          description: Corruption risk metrics
+  /integrity/audit-trails:
+    get:
+      summary: Immutable administrative audit trails
+      responses:
+        '200':
+          description: Audit history
+
+  # Identity Domain
+  /identity/records:
+    get:
+      summary: Raw biometric passport and civil status indices
+      responses:
+        '200':
+          description: National civil registry data
+  /identity/verification:
+    post:
+      summary: Secure digital identity verification processing
+      responses:
+        '200':
+          description: Secure match/no-match result
+  /identity/credentials:
+    get:
+      summary: Federal civil servant and citizen digital PKI certificate indices
+      responses:
+        '200':
+          description: Active identity credential credentials
+  /identity/lifecycle:
+    get:
+      summary: Track credential revision histories
+      responses:
+        '200':
+          description: Identity lifecycle logs
+
+  # Workforce Domain
+  /workforce/roster:
+    get:
+      summary: Federal security and border workforce personnel rosters
+      responses:
+        '200':
+          description: Active workforce registry
+  /workforce/shifts:
+    get:
+      summary: Shift plans for remote/secured border crossing installations
+      responses:
+        '200':
+          description: Shift schedule plan
+  /workforce/assignments:
+    get:
+      summary: Deployments of specialized agents and inspectors
+      responses:
+        '200':
+          description: Assignment tracking
+  /workforce/certifications:
+    get:
+      summary: Security clearance levels and active training credentials
+      responses:
+        '200':
+          description: Certified agent manifest
+
+  # Security Domain
+  /security/sessions:
+    get:
+      summary: Live digital session monitoring lists
+      responses:
+        '200':
+          description: Session tracking
+  /security/devices:
+    get:
+      summary: Authorized edge devices and biometrics reader registers
+      responses:
+        '200':
+          description: Terminal secure keys
+  /security/mfa:
+    post:
+      summary: Multi-factor token audits
+      responses:
+        '200':
+          description: Verification success logs
+  /security/audit:
+    get:
+      summary: Raw infrastructure intrusion audit records
+      responses:
+        '200':
+          description: Defensive security events
+
+  # Intelligence Domain
+  /intelligence/threats:
+    get:
+      summary: Real-time strategic threats logged
+      responses:
+        '200':
+          description: Federal raw threat metrics
+  /intelligence/alerts:
+    get:
+      summary: Tactical intelligence alerts broadcast index
+      responses:
+        '200':
+          description: National alerts index
+  /intelligence/watchlists:
+    get:
+      summary: National list showing individuals forbidden from crossing border
+      responses:
+        '200':
+          description: Federal border enforcement watchlist
+  /intelligence/fusion:
+    get:
+      summary: Correlated data intelligence insights
+      responses:
+        '200':
+          description: Fusion modeling outputs
+
+  /settlement/readiness:
+    get:
+      summary: Federal settlement readiness status
+      deprecated: true
+      responses:
+        '200':
+          description: Settlement policy engine configuration and Federal data provider status check
+
+  /border-settlement/readiness:
+    get:
+      summary: Federal border-specific revenue settlement readiness status
+      responses:
+        '200':
+          description: Border settlement policy engine configurations, Federal border gate data provider state and verification checks
+
+

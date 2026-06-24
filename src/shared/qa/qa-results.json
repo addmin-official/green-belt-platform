@@ -1,0 +1,159 @@
+{
+  "mockDependencyCheck": {
+    "name": "Mock Dependency Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: Mock dependency checks passed with 100% compliance.",
+    "timestamp": "2026-06-12T23:04:17.741Z"
+  },
+  "sovereignBoundaryCheck": {
+    "name": "Sovereign Boundary Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: Sovereign boundaries verified. 100% compliance across KRG, Federal, and Shared spaces.",
+    "timestamp": "2026-06-12T23:04:17.874Z"
+  },
+  "localizationCoverageCheck": {
+    "name": "Localization Coverage Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: Localization key trees are 100% matched across en, ar, and ku with zero orphan or missing keys.",
+    "timestamp": "2026-06-12T23:04:17.976Z"
+  },
+  "rtlTypographyCheck": {
+    "name": "RTL Typography Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: RTL typography audit completed.",
+    "timestamp": "2026-06-12T23:04:18.071Z"
+  },
+  "hardcodedSuccessCheck": {
+    "name": "Hardcoded Success Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: Static success claim audit complete. All metrics are resolved programmatically from actual telemetry.",
+    "timestamp": "2026-06-12T23:04:18.247Z"
+  },
+  "demoIsolationCheck": {
+    "name": "Demo Isolation Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: Demo data isolation verified. Production containers are 100% clean of demo references.",
+    "timestamp": "2026-06-12T23:04:18.401Z"
+  },
+  "apiContractCheck": {
+    "name": "API Contract Compliance Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "PASS: All 16 API Contract structures comply with national sovereignty bounds, schema controls, and metadata-only limits.",
+    "timestamp": "2026-06-12T23:04:18.484Z"
+  },
+  "openapiContractCheck": {
+    "name": "OpenAPI Contract Verification Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING OPENAPI CONTRACT BOUNDARY COMPLIANCE SEARCH ---",
+    "timestamp": "2026-06-12T23:04:18.568Z"
+  },
+  "deploymentReadinessCheck": {
+    "name": "Deployment Readiness Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING PLATFORM DEPLOYMENT READINESS QA ---",
+    "timestamp": "2026-06-12T23:04:18.647Z"
+  },
+  "buildOutputSafetyCheck": {
+    "name": "Build Output Safety Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING PLATFORM BUILD OUTPUT SAFETY QA SCAN ---",
+    "timestamp": "2026-06-12T23:04:32.923Z"
+  },
+  "providerWiringCheck": {
+    "name": "Pilot Backend Wiring Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING FRONTEND ↔ PILOT BACKEND WIRING QA AUDIT ---",
+    "timestamp": "2026-06-12T23:04:18.751Z"
+  },
+  "uatDryRunCheck": {
+    "name": "UAT Dry-Run Compliance Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING UAT DRY-RUN AND ROLE-BASED BOUNDARY SCAN ---",
+    "timestamp": "2026-06-12T23:04:18.835Z"
+  },
+  "krgDigitalCompatibilityCheck": {
+    "name": "KRG Digital Standards Compliance Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING KRG DIGITAL SERVICES COMPATIBILITY CHECK ---",
+    "timestamp": "2026-06-12T23:04:18.929Z"
+  },
+  "krgOnboardingPackageCheck": {
+    "name": "KRG Onboarding Package Compliance Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING KRG PROVIDER APPROVAL & ONBOARDING PACKAGE CHECK ---",
+    "timestamp": "2026-06-12T23:04:19.033Z"
+  },
+  "krgPitchPackageCheck": {
+    "name": "KRG Executive Pitch & Partnership Package Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING EXECUTIVE PITCH & PARTNERSHIP PACKAGE CHECK ---",
+    "timestamp": "2026-06-12T23:04:19.114Z"
+  },
+  "krgOutreachPackageCheck": {
+    "name": "KRG Executive Outreach & Meetings Request Package Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "--- STARTING EXECUTIVE OUTREACH PACKAGE COMPLIANCE CHECK ---",
+    "timestamp": "2026-06-12T23:04:19.196Z"
+  },
+  "krgTrainingPackageCheck": {
+    "name": "KRG Training & Manual Package Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "====================================================",
+    "timestamp": "2026-06-12T23:04:19.287Z"
+  },
+  "uiContainmentCheck": {
+    "name": "UI Containment & Safety Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "====================================================",
+    "timestamp": "2026-06-12T23:04:19.444Z"
+  },
+  "fiscalSettlementPolicyCheck": {
+    "name": "Fiscal Settlement Policy & Rules Engine Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "=== [QA] STARTING FISCAL SETTLEMENT POLICY VERIFICATION ===",
+    "timestamp": "2026-06-12T23:04:19.540Z"
+  },
+  "borderSettlementPolicyCheck": {
+    "name": "Border Settlement Policy & Rules Engine Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "=== [QA] STARTING BORDER REVENUE SETTLEMENT AUDIT ===",
+    "timestamp": "2026-06-12T23:04:19.620Z"
+  },
+  "borderScopeLockCheck": {
+    "name": "Border Operating System Scope Lock Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "=== [QA] STARTING BORDER SCOPE LOCK AUDIT ===",
+    "timestamp": "2026-06-12T23:04:19.705Z"
+  },
+  "buildCheck": {
+    "name": "Build Check",
+    "status": "PASS",
+    "violationsCount": 0,
+    "details": "Production package build compiles cleanly under Vite bundle guidelines.",
+    "timestamp": "2026-06-12T23:04:32.597Z"
+  },
+  "readinessDecision": "CONDITIONALLY_READY — BORDER SCOPE LOCKED, PRUNING PLAN READY, PROVIDERS REQUIRED",
+  "overallComplianceScore": 100,
+  "timestamp": "2026-06-12T23:04:32.923Z"
+}

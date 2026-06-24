@@ -1,0 +1,8 @@
+{
+  "totalRevenue": "Total Tax Revenue Logged",
+  "fxReconciliation": "FX Reconciliation Speed",
+  "bankIntegration": "Central Bank Live Verification",
+  "wireAuthentication": "Central Bank Wire Authenticated",
+  "revenueGrowth": "Predicted Dynamic Tariff Revenue Growth",
+  "macroTrend": "National Treasury Macro Trend Prediction"
+}

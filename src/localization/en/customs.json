@@ -1,0 +1,17 @@
+{
+  "manifestPreset": "Load Sovereign Manifest Preset",
+  "orCustomText": "OR Write / Modify Cargo Manifest Details",
+  "analyzeButton": "Initiate Sovereign AI Compliance Audit",
+  "analyzing": "Auditing via Custom Risk Brain (Gemini)...",
+  "resultTitle": "Sovereign Intelligence Audit Report",
+  "complianceStatus": "Compliance Status",
+  "suggestedHS": "Verified HS-Code",
+  "riskFactor": "Threat Intelligence Risk Index",
+  "calculatedTariff": "Calculated National Duty Tariff",
+  "classificationsTitle": "Live Customs Classification Stream List",
+  "underInvoicingTitle": "Under-Invoicing Auditor",
+  "declaredValue": "Declared Value",
+  "suggestedTariff": "Suggested Tariff Rate",
+  "cargoDescription": "Cargo Description",
+  "originCountry": "Country of Origin"
+}

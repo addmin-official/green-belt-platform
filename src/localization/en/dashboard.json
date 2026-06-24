@@ -1,0 +1,19 @@
+{
+  "commandCenterTitle": "Sovereign National Command Center (IDG Command Hub)",
+  "pmoProfileTitle": "Prime Minister's Executive Briefing",
+  "pmoProfileSub": "Supreme Strategy Decision Matrix & Budget Allocation Monitoring",
+  "ministriesTitle": "Inter-Agency Ministerial Gateway",
+  "ministriesSub": "Custom Clearance Accords, Quality Control (COSQC), and Defense Dual-Use Interlocks",
+  "customsTitle": "Federal Customs Control Command",
+  "customsSub": "Real-Time Tariffs, Classification Audit Engine, and Revenue Anti-Corruption Shield",
+  "borderTitle": "National Border Security & Logistics Hub",
+  "borderSub": "X-Ray Scanners, Quarantine Alarms, and Biosecurity Gate Clearance Signals",
+  "economicTitle": "National Trade Council Operations Desk",
+  "economicSub": "Foreign Exchange Matching, Balance of Payments Index, and Regional Expansion Scenarios",
+  "nodeMetrics": "Node Infrastructure Metrics",
+  "activeBorderNodes": "Active Border Nodes & Checkpoints",
+  "sovereignTechServices": "Sovereign Technical Services",
+  "nationalTradeAlerts": "National Trade Integrity Alerts",
+  "integrityVerified": "All gateway nodes reporting full compliance. Decoupled offline failover standby ACTIVE.",
+  "customStatus": "FEDERAL SOVEREIGN INTEROPERABILITY: Baghdad ⇄ Erbil Integration fully synchronized."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "idg-backend-scaffold",
+  "version": "1.0.0",
+  "description": "Iraq Digital Gateway - Hardened Pilot Backend MVP Scaffold",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "qa:safety": "node scripts/check-backend-safety.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}

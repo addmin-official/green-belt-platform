@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Iraq Digital Gateway - Joint Operations API Contract Specification
+  description: Sovereign Technical API integration contract layer for Joint Federal/KRG Bilateral Coordination and National Netting. Strictly enforces a metadata-only boundary. Raw financial, identity, customs, workforce, intelligence, or biometric records are completely blocked at this layer.
+  version: 1.0.0
+servers:
+  - url: http://placeholder-joint-coordination-service:3000/api/v1
+    description: Joint Coordination Netting Gateway Placeholder (Configured via env variables)
+paths:
+  /joint/reconciliation:
+    get:
+      summary: Fetch national tariff and revenue reconciliation status aggregates
+      description: Returns multi-way match and reconciliation state records (aggregated numbers only).
+      responses:
+        '200':
+          description: Reconciliation and clearance overview list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JointReconciliationSummary'
+  /joint/hash-verification:
+    post:
+      summary: Verify integrity hashes of customs declarations across both agencies
+      description: Allows verification of document receipts by cryptographic hash without disclosing raw payload contents.
+      responses:
+        '200':
+          description: Verification match status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HashVerificationResult'
+  /joint/settlement-status:
+    get:
+      summary: Consolidated CBI financial netting and settlement balance status
+      description: Retrieve aggregated financial netting status for inter-governmental custom fee sharing agreements.
+      responses:
+        '200':
+          description: Netting balance summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettlementNettingDetails'
+  /joint/settlement/reconciliation:
+    get:
+      summary: Joint fiscal settlement reconciliation
+      deprecated: true
+      description: Returns reconciliation status of KRG submitted proofs and Federal acknowledgment hashes.
+      responses:
+        '200':
+          description: Reconciliation and metadata exchange verification
+
+  /joint/border-settlement/reconciliation:
+    get:
+      summary: Joint border-specific settlement reconciliation
+      description: Returns metadata-only reconciliation status comparing cryptographic border proof hashes, gating periods, and transfer statuses.
+      responses:
+        '200':
+          description: Joint zero-disclosure hash alignment verification
+
+
+  /joint/metadata-exchange:
+    get:
+      summary: Cross-agency operational metadata exchange
+      description: High-level configuration models, active gateways registries, and process blueprints.
+      responses:
+        '200':
+          description: Standard metadata interchange
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataExchangePackage'
+  /joint/audit-verification:
+    get:
+      summary: Audit logs tamper verification system
+      description: Returns cryptographic audit trail verification results on unified auditing logs without disclosure of raw inputs.
+      responses:
+        '200':
+          description: Tampering check integrity results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditTrailVerificationResult'
+  /joint/sync-status:
+    get:
+      summary: Joint coordination nodes database synchronization status check
+      description: Asserts whether both regional and federal indexes are in-sync.
+      responses:
+        '200':
+          description: Sync state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncCheckResponse'
+
+components:
+  schemas:
+    JointReconciliationSummary:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        matchedCount:
+          type: integer
+        reconciledAmountIQD:
+          type: string
+          description: "Aggregated amount string"
+        integrityHash:
+          type: string
+        status:
+          type: string
+          enum: [MATCHED, UNMATCHED, DISCREPANCY_DETECTED]
+    HashVerificationResult:
+      type: object
+      properties:
+        documentId:
+          type: string
+        hashMatched:
+          type: boolean
+        verifiedAt:
+          type: string
+          format: date-time
+        complianceCode:
+          type: string
+    SettlementNettingDetails:
+      type: object
+      properties:
+        ledgerId:
+          type: string
+        nettingPeriod:
+          type: string
+        federallyCollectedAmountIQD:
+          type: string
+        krgCollectedAmountIQD:
+          type: string
+        jointRevenueNettingBalance:
+          type: string
+        status:
+          type: string
+          enum: [SETTLED, PENDING_CBI_TRANSFER]
+    MetadataExchangePackage:
+      type: object
+      properties:
+        schemaVersion:
+          type: string
+        activeNodeCount:
+          type: integer
+        lastExchangeTimestamp:
+          type: string
+    AuditTrailVerificationResult:
+      type: object
+      properties:
+        verifiedChainId:
+          type: string
+        hasTamperingBeenDetected:
+          type: boolean
+        lastBlockPassedAudit:
+          type: boolean
+        totalVerifiedBlocksCount:
+          type: integer
+    SyncCheckResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [IN_SYNC, SYNC_IN_PROGRESS, OUT_OF_SYNC]
+        lastSyncDurationMs:
+          type: integer
