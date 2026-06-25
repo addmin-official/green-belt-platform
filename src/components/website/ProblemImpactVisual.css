@@ -1,0 +1,280 @@
+.circular-impact {
+  display: grid;
+  gap: 22px;
+  contain: layout paint style;
+}
+
+.circular-impact__visual {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(86, 214, 141, .16);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(86, 214, 141, .12), transparent 42%),
+    linear-gradient(145deg, rgba(13, 47, 27, .96), rgba(5, 22, 12, .99));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.circular-impact__visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .09;
+  background-image:
+    linear-gradient(rgba(86, 214, 141, .18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(86, 214, 141, .18) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.circular-impact__eyebrow,
+.circular-impact__status {
+  position: absolute;
+  z-index: 4;
+  top: 24px;
+  padding: 10px 13px;
+  border: 1px solid rgba(86, 214, 141, .17);
+  border-radius: 14px;
+  background: rgba(5, 29, 16, .9);
+}
+
+.circular-impact__eyebrow {
+  inset-inline-start: 24px;
+  display: grid;
+  gap: 4px;
+}
+
+.circular-impact__eyebrow span {
+  color: #56d68d;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.circular-impact__eyebrow strong {
+  color: #edf8f0;
+  font-size: 12px;
+}
+
+.circular-impact__status {
+  inset-inline-end: 24px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #9eb5a6;
+  border-radius: 999px;
+  font-size: 9px;
+}
+
+.circular-impact__status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #56d68d;
+  box-shadow: 0 0 12px rgba(86, 214, 141, .7);
+}
+
+.circular-impact__stage {
+  position: absolute;
+  inset: 78px 34px 118px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid rgba(86, 214, 141, .12);
+  background: linear-gradient(180deg, rgba(240, 248, 239, .98), rgba(225, 238, 224, .96));
+}
+
+.circular-impact__svg {
+  width: min(100%, 760px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  filter: drop-shadow(0 18px 28px rgba(18, 79, 41, .12));
+}
+
+.circular-impact.is-active .circular-impact__float {
+  animation: circularFloat 7s ease-in-out infinite;
+}
+
+.circular-impact.is-active .circular-impact__flow {
+  animation: circularFlow 5.5s linear infinite;
+}
+
+.circular-impact.is-active .circular-impact__pulse {
+  animation: circularPulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.circular-impact__steps {
+  position: absolute;
+  z-index: 5;
+  inset-inline: 24px;
+  bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.circular-impact__step {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 12px;
+  border: 1px solid rgba(86, 214, 141, .15);
+  border-radius: 14px;
+  background: rgba(5, 30, 16, .92);
+}
+
+.circular-impact__step-number {
+  color: rgba(255, 255, 255, .28);
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.circular-impact__step-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #56d68d;
+  background: rgba(86, 214, 141, .09);
+}
+
+.circular-impact__step-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.circular-impact__step-copy strong {
+  color: #eaf6ee;
+  font-size: 10px;
+}
+
+.circular-impact__step-copy small {
+  color: #738c7d;
+  font-size: 8px;
+}
+
+.circular-impact__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.circular-impact__card {
+  position: relative;
+  min-height: 225px;
+  padding: 23px;
+  border: 1px solid rgba(86, 214, 141, .11);
+  border-radius: 20px;
+  background: linear-gradient(150deg, rgba(18, 51, 31, .8), rgba(7, 27, 15, .96));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .15);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.circular-impact__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(86, 214, 141, .26);
+}
+
+.circular-impact__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.circular-impact__card-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(86, 214, 141, .18);
+  border-radius: 14px;
+  color: #56d68d;
+  background: rgba(86, 214, 141, .08);
+}
+
+.circular-impact__card-index {
+  color: rgba(255, 255, 255, .14);
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.circular-impact__card h3 {
+  margin: 24px 0 9px;
+  color: #eef7f1;
+  font-size: 16px;
+}
+
+.circular-impact__card p {
+  margin: 0 0 30px;
+  color: #96aa9d;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.circular-impact__card-state {
+  position: absolute;
+  inset-inline-start: 23px;
+  bottom: 19px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #6f8978;
+  font-size: 8px;
+  font-weight: 750;
+}
+
+.circular-impact__card-state::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d6aa4d;
+}
+
+@keyframes circularFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
+@keyframes circularFlow {
+  to { stroke-dashoffset: -84; }
+}
+
+@keyframes circularPulse {
+  0%, 100% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.035); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .circular-impact__visual { min-height: 720px; }
+  .circular-impact__stage { inset: 76px 16px 246px; }
+  .circular-impact__steps { grid-template-columns: 1fr; }
+  .circular-impact__cards { grid-template-columns: 1fr; }
+  .circular-impact__status { display: none; }
+}
+
+@media (max-width: 600px) {
+  .circular-impact__visual { min-height: 670px; border-radius: 24px; }
+  .circular-impact__eyebrow { top: 14px; inset-inline-start: 14px; }
+  .circular-impact__stage { inset: 68px 10px 238px; border-radius: 18px; }
+  .circular-impact__steps { inset-inline: 12px; bottom: 12px; }
+  .circular-impact__card { min-height: 215px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circular-impact__float,
+  .circular-impact__flow,
+  .circular-impact__pulse,
+  .circular-impact__card {
+    animation: none !important;
+    transition: none !important;
+  }
+}
