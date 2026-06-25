@@ -1985,3 +1985,574 @@ a { color: inherit; }
     font-size: 17px;
   }
 }
+
+/* =========================================================
+   ADVANCED 3D PROBLEM / ENVIRONMENTAL RISK EXPERIENCE
+   ========================================================= */
+
+.problem-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(86, 214, 141, .09),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 82% 68%,
+      rgba(214, 181, 111, .065),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 24, 14, .98),
+      rgba(5, 17, 9, 1)
+    );
+}
+
+.problem-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(
+      rgba(86, 214, 141, .08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(86, 214, 141, .08) 1px,
+      transparent 1px
+    );
+  background-size: 54px 54px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 82%,
+      transparent
+    );
+}
+
+.problem-section-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.problem-ambient {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: .5;
+}
+
+.problem-ambient-a {
+  width: 420px;
+  height: 420px;
+  top: 8%;
+  inset-inline-start: -180px;
+  background: rgba(20, 186, 105, .12);
+  animation: problemAmbientFloat 12s ease-in-out infinite;
+}
+
+.problem-ambient-b {
+  width: 340px;
+  height: 340px;
+  bottom: 2%;
+  inset-inline-end: -120px;
+  background: rgba(214, 181, 111, .08);
+  animation:
+    problemAmbientFloat 15s 2s ease-in-out infinite reverse;
+}
+
+.problem-experience {
+  display: grid;
+  gap: 34px;
+}
+
+.problem-hologram-shell {
+  position: relative;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 32px;
+  perspective: 1200px;
+  border: 1px solid rgba(116, 235, 167, .15);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(38, 164, 96, .12),
+      transparent 32%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(16, 43, 26, .88),
+      rgba(5, 19, 11, .96)
+    );
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, .35),
+    inset 0 1px rgba(255, 255, 255, .055);
+}
+
+.problem-hologram-shell::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  pointer-events: none;
+  border: 1px solid rgba(86, 214, 141, .07);
+}
+
+.problem-grid-floor {
+  position: absolute;
+  width: 140%;
+  height: 90%;
+  bottom: -46%;
+  transform:
+    rotateX(70deg)
+    translateZ(-30px);
+  transform-origin: center;
+  background-image:
+    linear-gradient(
+      rgba(86, 214, 141, .18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(86, 214, 141, .18) 1px,
+      transparent 1px
+    );
+  background-size: 42px 42px;
+  opacity: .22;
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black,
+      transparent 70%
+    );
+}
+
+.problem-core {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  transform-style: preserve-3d;
+  display: grid;
+  place-items: center;
+}
+
+.problem-core-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(86, 214, 141, .34);
+  box-shadow:
+    0 0 35px rgba(86, 214, 141, .08),
+    inset 0 0 20px rgba(86, 214, 141, .05);
+}
+
+.problem-core-ring::before,
+.problem-core-ring::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 16px var(--green);
+}
+
+.problem-core-ring::before {
+  top: 14%;
+  left: 12%;
+}
+
+.problem-core-ring::after {
+  right: 10%;
+  bottom: 19%;
+}
+
+.problem-core-ring.ring-a {
+  inset: 6px;
+  transform: rotateX(68deg) rotateZ(12deg);
+  animation: problemRingSpin 9s linear infinite;
+}
+
+.problem-core-ring.ring-b {
+  inset: 30px;
+  border-color: rgba(214, 181, 111, .3);
+  transform: rotateY(65deg) rotateZ(-18deg);
+  animation: problemRingSpin 12s linear infinite reverse;
+}
+
+.problem-core-ring.ring-c {
+  inset: 58px;
+  transform: rotateX(34deg) rotateY(48deg);
+  animation: problemRingSpin 7s linear infinite;
+}
+
+.problem-core-center {
+  position: relative;
+  z-index: 4;
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border-radius: 27px;
+  color: #f0cb78;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(214, 181, 111, .18),
+      rgba(86, 214, 141, .08)
+    );
+  border: 1px solid rgba(214, 181, 111, .36);
+  backdrop-filter: blur(16px);
+  transform: translateZ(45px);
+}
+
+.problem-core-center::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.problem-orbit-data {
+  position: absolute;
+  inset: -22px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.problem-orbit-data span {
+  position: absolute;
+  padding: 6px 9px;
+  border-radius: 8px;
+  color: rgba(182, 247, 207, .74);
+  font-family: Inter, monospace;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  border: 1px solid rgba(86, 214, 141, .15);
+  background: rgba(7, 25, 14, .72);
+  backdrop-filter: blur(10px);
+}
+
+.problem-orbit-data span:nth-child(1) {
+  top: 5%;
+  left: 8%;
+  transform: translateZ(25px);
+}
+
+.problem-orbit-data span:nth-child(2) {
+  top: 46%;
+  right: -12%;
+  transform: translateZ(50px);
+}
+
+.problem-orbit-data span:nth-child(3) {
+  bottom: 2%;
+  left: 24%;
+  transform: translateZ(30px);
+}
+
+.problem-scan-line {
+  position: absolute;
+  z-index: 5;
+  width: 62%;
+  height: 1px;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(86, 214, 141, .95),
+      transparent
+    );
+  box-shadow:
+    0 0 18px rgba(86, 214, 141, .75),
+    0 18px 44px rgba(86, 214, 141, .16);
+}
+
+.problem-sensor {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: #c9ebd5;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 750;
+  border: 1px solid rgba(86, 214, 141, .16);
+  background: rgba(8, 31, 17, .72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .24);
+}
+
+.problem-sensor svg {
+  color: var(--green);
+}
+
+.problem-sensor.sensor-a {
+  top: 34px;
+  inset-inline-start: 34px;
+}
+
+.problem-sensor.sensor-b {
+  bottom: 32px;
+  inset-inline-end: 34px;
+}
+
+.problem-pulse {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow:
+    0 0 0 0 rgba(86, 214, 141, .5);
+  animation: problemPulse 2.5s ease-out infinite;
+}
+
+.problem-pulse.pulse-a {
+  top: 26%;
+  left: 23%;
+}
+
+.problem-pulse.pulse-b {
+  right: 20%;
+  top: 38%;
+  animation-delay: .8s;
+}
+
+.problem-pulse.pulse-c {
+  left: 31%;
+  bottom: 20%;
+  animation-delay: 1.5s;
+}
+
+.problem-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  perspective: 1100px;
+}
+
+.problem-tech-card {
+  position: relative;
+  min-height: 255px;
+  padding: 25px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  border-radius: 22px;
+  border: 1px solid rgba(112, 230, 160, .12);
+  background:
+    linear-gradient(
+      155deg,
+      rgba(21, 52, 33, .72),
+      rgba(8, 25, 14, .9)
+    );
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, .2),
+    inset 0 1px rgba(255, 255, 255, .045);
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.problem-tech-card:hover {
+  border-color: rgba(86, 214, 141, .36);
+  box-shadow:
+    0 32px 75px rgba(0, 0, 0, .34),
+    0 0 42px rgba(86, 214, 141, .06);
+}
+
+.problem-tech-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 20%,
+      rgba(255, 255, 255, .045) 48%,
+      transparent 72%
+    );
+  transform: translateX(-130%);
+  transition: transform .8s ease;
+}
+
+.problem-tech-card:hover::after {
+  transform: translateX(130%);
+}
+
+.problem-card-glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: -80px;
+  inset-inline-end: -70px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(86, 214, 141, .12);
+  filter: blur(45px);
+}
+
+.problem-card-head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateZ(24px);
+}
+
+.problem-card-index {
+  color: rgba(255, 255, 255, .17);
+  font-family: Inter, monospace;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.problem-card-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  color: var(--green);
+  border-radius: 16px;
+  border: 1px solid rgba(86, 214, 141, .2);
+  background: rgba(86, 214, 141, .08);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .05);
+}
+
+.problem-tech-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 30px 0 10px;
+  font-size: 17px;
+  transform: translateZ(18px);
+}
+
+.problem-tech-card p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: #9fb2a5;
+  font-size: 13px;
+  line-height: 1.9;
+  transform: translateZ(12px);
+}
+
+.problem-card-status {
+  position: absolute;
+  z-index: 2;
+  inset-inline-start: 25px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #739181;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.problem-card-status span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(86, 214, 141, .8);
+}
+
+@keyframes problemRingSpin {
+  to {
+    transform:
+      rotateX(68deg)
+      rotateZ(372deg);
+  }
+}
+
+@keyframes problemPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(86, 214, 141, .45);
+    opacity: 1;
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 28px rgba(86, 214, 141, 0);
+    opacity: .35;
+  }
+}
+
+@keyframes problemAmbientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(35px, -28px, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .problem-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-hologram-shell {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .problem-hologram-shell {
+    min-height: 330px;
+    border-radius: 24px;
+  }
+
+  .problem-core {
+    width: 190px;
+    height: 190px;
+  }
+
+  .problem-sensor {
+    font-size: 8px;
+  }
+
+  .problem-sensor.sensor-a {
+    top: 20px;
+    inset-inline-start: 18px;
+  }
+
+  .problem-sensor.sensor-b {
+    bottom: 20px;
+    inset-inline-end: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .problem-core,
+  .problem-core-ring,
+  .problem-ambient,
+  .problem-pulse {
+    animation: none !important;
+  }
+
+  .problem-tech-card {
+    transform: none !important;
+  }
+}
