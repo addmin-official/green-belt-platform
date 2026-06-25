@@ -25,6 +25,7 @@ import {
   Layers
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import GoogleProjectsMap from '../../components/maps/GoogleProjectsMap';
 
 // Kurdish Sorani translation map for the entire dashboard UI
 const DK = {
@@ -63,10 +64,10 @@ const DK = {
 
 // Cleaned Kurdish Sorani Reforestation Demo Projects
 const INITIAL_TREE_PROJECTS = [
-  { id: 'tree-proj-01', name: 'کەمەربەندی سەوزی کێوی سەفین', treesSupported: 5200, compostReceived: 10.5, supervisor: 'د. ئالان ڕۆستەم', survivalRate: 98.2, description: 'پڕۆژەی چاندنی نەمام لە لێوارەکانی کێوی سەفین بۆ ڕێگریکردن لە ڕاماڵینی خاک و بنیاتنانەوەی پۆشەری سەوزایی.' },
-  { id: 'tree-proj-02', name: 'کەمربەندی دەوروبەری هەولێر', treesSupported: 3600, compostReceived: 7.8, supervisor: 'لێپرسراو شێروان قادر', survivalRate: 95.8, description: 'پشتوێنی سەوزی باکووری شاری هەولێر بۆ کەمکردنەوەی کاریگەری تۆز و خۆڵ و نزمکردنەوەی پلەی گەرمی هاوین.' },
-  { id: 'tree-proj-03', name: 'سەوزایی دامێنی شاخی گۆیژە', treesSupported: 2150, compostReceived: 4.5, supervisor: 'ئەندازیار هێرش ڕەحمان', survivalRate: 94.6, description: 'دارستانکردن و خزمەتکردنی نەمامەکانی شاخی گۆیژە بە بەکارهێنانی سسیستەمی ئاودێری مۆدێرن و کۆمپوستی ئۆرگانیک.' },
-  { id: 'tree-proj-04', name: 'ناوچەی پارێزراوی بارزان', treesSupported: 1550, compostReceived: 3.2, supervisor: 'د. کاروان عومەر', survivalRate: 98.9, description: 'پەرەپێدانی زیندەیی و چاندنی داربەڕووی بومی لە ناوچە شاخاوییەکان بە هاوکاری کۆمەڵگەی خۆجێیی.' }
+  { id: 'tree-proj-01', lat: 36.5320, lng: 44.2740, name: 'کەمەربەندی سەوزی کێوی سەفین', treesSupported: 5200, compostReceived: 10.5, supervisor: 'د. ئالان ڕۆستەم', survivalRate: 98.2, description: 'پڕۆژەی چاندنی نەمام لە لێوارەکانی کێوی سەفین بۆ ڕێگریکردن لە ڕاماڵینی خاک و بنیاتنانەوەی پۆشەری سەوزایی.' },
+  { id: 'tree-proj-02', lat: 36.1911, lng: 44.0092, name: 'کەمربەندی دەوروبەری هەولێر', treesSupported: 3600, compostReceived: 7.8, supervisor: 'لێپرسراو شێروان قادر', survivalRate: 95.8, description: 'پشتوێنی سەوزی باکووری شاری هەولێر بۆ کەمکردنەوەی کاریگەری تۆز و خۆڵ و نزمکردنەوەی پلەی گەرمی هاوین.' },
+  { id: 'tree-proj-03', lat: 35.5840, lng: 45.4360, name: 'سەوزایی دامێنی شاخی گۆیژە', treesSupported: 2150, compostReceived: 4.5, supervisor: 'ئەندازیار هێرش ڕەحمان', survivalRate: 94.6, description: 'دارستانکردن و خزمەتکردنی نەمامەکانی شاخی گۆیژە بە بەکارهێنانی سسیستەمی ئاودێری مۆدێرن و کۆمپوستی ئۆرگانیک.' },
+  { id: 'tree-proj-04', lat: 36.9180, lng: 44.0470, name: 'ناوچەی پارێزراوی بارزان', treesSupported: 1550, compostReceived: 3.2, supervisor: 'د. کاروان عومەر', survivalRate: 98.9, description: 'پەرەپێدانی زیندەیی و چاندنی داربەڕووی بومی لە ناوچە شاخاوییەکان بە هاوکاری کۆمەڵگەی خۆجێیی.' }
 ];
 
 // Cleaned Kurdish Sorani Restaurants (only Erbil, Suly, Duhok - no federal reference)
@@ -1079,73 +1080,19 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
                         <TreePine className="w-5 h-5 text-[#cca553]" />
-                        سماواری دارستانەکان و کەمەربەندی سەوز
+                        نەخشەی دارستانەکان و کەمەربەندی سەوز
                       </h3>
-                      <p className="text-xs text-slate-400">بۆ زانیاری زیاتر دەربارەی پرۆژەی نەمامەکان، کرتە لە خاڵەکانی سەر نەخشەکە بکەن</p>
+                      <p className="text-xs text-slate-400">بۆ زانیاریی زیاتر دەربارەی شوێنەکانی چاندنی درەخت و ناوچەکانی کار، کرتە لەسەر نیشانەکانی نەخشەکە بکەن.</p>
                     </div>
                     <span className="text-[11px] font-mono bg-[#cca553]/15 text-[#cca553] border border-[#cca553]/30 px-3 py-1 rounded-full font-bold">
                       ئامانجی گشتی: ٧,٠٠٠,٠٠٠ درەخت
                     </span>
                   </div>
-
-                  {/* High Quality Interactive Map Canvas */}
-                  <div className="bg-[#08170d] border border-[#10b981]/20 rounded-2xl p-4 relative min-h-[300px] flex items-center justify-center overflow-hidden">
-                    
-                    {/* Background Grid Lines representing coordinates */}
-                    <div className="absolute inset-0 grid grid-cols-12 grid-rows-6 opacity-[0.03] pointer-events-none">
-                      {Array.from({ length: 72 }).map((_, i) => (
-                        <div key={i} className="border border-emerald-500"></div>
-                      ))}
-                    </div>
-
-                    {/* Simple abstract vector topography of Iraq/Green belts (pure CSS/interactive) */}
-                    <svg className="w-full h-64 opacity-20 absolute inset-0 pointer-events-none shrink-0" viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <path d="M30,0 L45,40 L65,70 L80,100" fill="none" stroke="#2563eb" strokeWidth="1" opacity="0.4" />
-                      <path d="M15,0 L30,37 L50,68 L68,100" fill="none" stroke="#10b981" strokeWidth="0.8" opacity="0.2" />
-                    </svg>
-
-                    {/* Coordinates Plotting Area with Kurdish translated markers */}
-                    <div className="absolute inset-x-12 inset-y-8 w-[80%] h-[80%] pointer-events-auto">
-                      {/* Simulating 4 coordinate markers */}
-                      {treeProjects.map((p, idx) => {
-                        const coords = [
-                          { left: '35%', top: '25%' }, // Suly
-                          { left: '55%', top: '45%' }, // Erbil
-                          { left: '20%', top: '50%' }, // Safen
-                          { left: '42%', top: '70%' }  // Barzan
-                        ];
-                        const coord = coords[idx] || { left: '50%', top: '50%' };
-                        return (
-                          <button
-                            key={p.id}
-                            onClick={() => setActiveProject(p)}
-                            className={`absolute group cursor-pointer -translate-x-1/2 -translate-y-1/2 focus:outline-none transition-all duration-300 ${
-                              activeProject.id === p.id ? 'scale-125 z-40' : 'scale-100 hover:scale-110 z-20'
-                            }`}
-                            style={{ left: coord.left, top: coord.top }}
-                          >
-                            <div className={`p-1 w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all ${
-                              activeProject.id === p.id 
-                                ? 'bg-amber-950 border-[#cca553] shadow-[0_0_12px_#cca553]' 
-                                : 'bg-emerald-950 border-[#10b981]/60'
-                            }`}>
-                              <TreePine className={`w-4 h-4 ${activeProject.id === p.id ? 'text-[#cca553]' : 'text-emerald-400'}`} />
-                            </div>
-                            <span className="absolute left-1/2 -translate-x-1/2 top-9 pointer-events-none bg-[#0b2112]/95 border border-slate-700/60 font-bold text-[10px] text-white px-2 py-0.5 rounded whitespace-nowrap shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                              {p.name}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    <div className="absolute bottom-3 left-4 text-[10px] text-slate-400 flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded bg-emerald-500 inline-block"></span>
-                      <span>وێستگەکانی چاکسازی نەمام بارکراون</span>
-                    </div>
-
-                  </div>
-
+                  <GoogleProjectsMap
+                    projects={treeProjects}
+                    activeProjectId={activeProject.id}
+                    onSelect={setActiveProject}
+                  />
                 </div>
 
                 {/* Selected Project In-depth Panel */}
