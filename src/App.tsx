@@ -99,7 +99,7 @@ function DashboardPage({
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-xs font-bold transition hover:bg-white/10"
             >
               <ArrowLeft size={16} />
-              گەڕانەوە بۆ گەڕانەوە بۆ وێبسایت
+              گەڕانەوە بۆ وێبسایت
             </button>
 
             <button
@@ -139,7 +139,7 @@ function DashboardPage({
 
         {!role ? (
           <div className="mt-5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm text-amber-200">
-            ئاستی ئاستی دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
+            ئاستی دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
           </div>
         ) : null}
       </main>
