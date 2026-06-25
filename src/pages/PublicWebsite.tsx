@@ -21,6 +21,7 @@ import {
 import { AnimatePresence, motion } from 'motion/react';
 import TechHeroVisual from '../components/website/TechHeroVisual';
 import OperatingModelVisual from '../components/website/OperatingModelVisual';
+import ProblemImpactVisual from '../components/website/ProblemImpactVisual';
 
 type Language = 'ku' | 'ar' | 'en';
 
@@ -62,7 +63,7 @@ const copy: Record<Language, Copy> = {
     problem: {
       kicker: 'کێشەکە',
       title: 'پاشماوەی خۆراک هەم خەرجییە، هەم مەترسیی ژینگەیی.',
-      body: 'کاتێک پاشماوەی خۆراک بەبێ جیاکردنەوە و تۆمارکردن فڕێ دەدرێت، نرخ و کاریگەریی ڕاستەقینەکەی ون دەبێت. پڕۆژەکە لە یەکەم ڕۆژەوە پێوانەکردن و بەرپرسیارێتی دەخاتە ناو پرۆسەکە.',
+      body: 'کاتێک پاشماوەی خۆراک بەبێ جیاکردنەوە و تۆمارکردن فڕێ دەدرێت، دەبێتە سەرچاوەیەکی مەترسیدار بۆ پیسبوونی خاک، ئاو و هەوا. ئەگەر ئەم ڕەوتە بەردەوام بێت، لە داهاتووی نزیکدا قەبارەی پاشماوەکان بە شێوەیەکی نائاسایی کەڵەکە دەبێت. کەمەربەندی سەوز لە یەکەم ڕۆژەوە جیاکردنەوە، پێوانەکردن، تۆمارکردن و بەرپرسیارێتی دەخاتە ناو هەموو قۆناغەکانی پرۆسەکە.',
       cards: [
         { title: 'جیاکردنەوەی لاواز', body: 'تێکەڵبوونی پاشماوەی ئۆرگانیک بە ماددەی ناپاک، کوالێتی کۆمپوست کەم دەکاتەوە.' },
         { title: 'داتای نەبوو', body: 'بەبێ بنچینەی پێوانە و تۆمار، ناتوانرێت خەرجی، کەمکردنەوە و ئەنجام بسەلمێنرێت.' },
@@ -227,7 +228,6 @@ const copy: Record<Language, Copy> = {
 const sectionIds = ['about', 'model', 'pilot', 'technology', 'transparency'];
 const stepIcons = [Recycle, Truck, Factory, BarChart3];
 const techIcons = [Building2, Database, ClipboardCheck, ShieldCheck];
-const problemIcons = [Recycle, Database, Truck];
 
 function SectionHeading({ kicker, title, body }: { kicker: string; title: string; body?: string }) {
   return <div className="section-heading"><span>{kicker}</span><h2>{title}</h2>{body ? <p>{body}</p> : null}</div>;
@@ -290,7 +290,23 @@ export default function App() {
           <div className="container stats-grid">{t.stats.map((item, index) => <motion.article key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }}><strong>{item.value}</strong><span>{item.label}</span><small>{item.detail}</small></motion.article>)}</div>
         </section>
 
-        <section id="about" className="section surface"><div className="container"><SectionHeading kicker={t.problem.kicker} title={t.problem.title} body={t.problem.body} /><div className="grid three">{t.problem.cards.map((item, index) => { const Icon = problemIcons[index]; return <article className="card" key={item.title}><span className="icon"><Icon size={23} /></span><h3>{item.title}</h3><p>{item.body}</p></article>; })}</div></div></section>
+        <section
+          id="about"
+          className="section surface problem-section"
+        >
+          <div className="problem-ambient problem-ambient-a" />
+          <div className="problem-ambient problem-ambient-b" />
+
+          <div className="container problem-section-inner">
+            <SectionHeading
+              kicker={t.problem.kicker}
+              title={t.problem.title}
+              body={t.problem.body}
+            />
+
+            <ProblemImpactVisual cards={t.problem.cards} />
+          </div>
+        </section>
 
         <section id="model" className="section model-section">
           <div className="container">
