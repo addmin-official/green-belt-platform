@@ -1,4 +1,9 @@
 import {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import {
   AlertTriangle,
   Database,
   Recycle,
@@ -22,25 +27,104 @@ const icons = [
   Truck,
 ];
 
+function useSectionVisibility() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const root = rootRef.current;
+
+    if (!root) {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    );
+
+    const updateMotionPreference = () => {
+      setReduceMotion(mediaQuery.matches);
+    };
+
+    updateMotionPreference();
+    mediaQuery.addEventListener(
+      'change',
+      updateMotionPreference,
+    );
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        rootMargin: '180px 0px',
+        threshold: 0.08,
+      },
+    );
+
+    observer.observe(root);
+
+    return () => {
+      observer.disconnect();
+      mediaQuery.removeEventListener(
+        'change',
+        updateMotionPreference,
+      );
+    };
+  }, []);
+
+  return {
+    rootRef,
+    shouldAnimate: isVisible && !reduceMotion,
+  };
+}
+
 export default function ProblemImpactVisual({
   cards,
 }: ProblemImpactVisualProps) {
+  const {
+    rootRef,
+    shouldAnimate,
+  } = useSectionVisibility();
+
   return (
-    <div className="problem-experience">
+    <div
+      ref={rootRef}
+      className={
+        shouldAnimate
+          ? 'problem-experience is-active'
+          : 'problem-experience'
+      }
+    >
       <div className="problem-hologram-shell">
         <div className="problem-grid-floor" />
 
         <motion.div
           className="problem-core"
-          animate={{
-            rotateY: [0, 360],
-            rotateX: [4, -4, 4],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
+          initial={false}
+          animate={
+            shouldAnimate
+              ? {
+                  rotateY: [0, 120, 240, 360],
+                  rotateX: [3, -3, 3],
+                }
+              : {
+                  rotateY: 0,
+                  rotateX: 0,
+                }
+          }
+          transition={
+            shouldAnimate
+              ? {
+                  duration: 36,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }
+              : {
+                  duration: 0,
+                }
+          }
         >
           <div className="problem-core-ring ring-a" />
           <div className="problem-core-ring ring-b" />
@@ -48,19 +132,27 @@ export default function ProblemImpactVisual({
 
           <motion.div
             className="problem-core-center"
-            animate={{
-              scale: [1, 1.08, 1],
-              boxShadow: [
-                '0 0 35px rgba(86,214,141,.22)',
-                '0 0 70px rgba(86,214,141,.42)',
-                '0 0 35px rgba(86,214,141,.22)',
-              ],
-            }}
-            transition={{
-              duration: 3.4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
+            initial={false}
+            animate={
+              shouldAnimate
+                ? {
+                    scale: [1, 1.04, 1],
+                  }
+                : {
+                    scale: 1,
+                  }
+            }
+            transition={
+              shouldAnimate
+                ? {
+                    duration: 4.8,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }
+                : {
+                    duration: 0,
+                  }
+            }
           >
             <AlertTriangle size={42} />
           </motion.div>
@@ -74,15 +166,29 @@ export default function ProblemImpactVisual({
 
         <motion.div
           className="problem-scan-line"
-          animate={{
-            y: [-150, 150],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 4.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          initial={false}
+          animate={
+            shouldAnimate
+              ? {
+                  y: [-130, 130],
+                  opacity: [0, 0.75, 0],
+                }
+              : {
+                  y: 0,
+                  opacity: 0,
+                }
+          }
+          transition={
+            shouldAnimate
+              ? {
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }
+              : {
+                  duration: 0,
+                }
+          }
         />
 
         <div className="problem-sensor sensor-a">
@@ -110,26 +216,22 @@ export default function ProblemImpactVisual({
               key={card.title}
               initial={{
                 opacity: 0,
-                y: 35,
-                rotateX: 8,
+                y: 22,
               }}
               whileInView={{
                 opacity: 1,
                 y: 0,
-                rotateX: 0,
               }}
               viewport={{
                 once: true,
-                amount: 0.25,
+                amount: 0.2,
               }}
               transition={{
-                duration: 0.65,
-                delay: index * 0.12,
+                duration: 0.45,
+                delay: index * 0.08,
               }}
               whileHover={{
-                y: -8,
-                rotateX: 2,
-                rotateY: index === 1 ? 0 : index === 0 ? 2 : -2,
+                y: -4,
               }}
             >
               <div className="problem-card-glow" />

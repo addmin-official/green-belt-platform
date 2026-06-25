@@ -2556,3 +2556,157 @@ a { color: inherit; }
     transform: none !important;
   }
 }
+
+/* PERFORMANCE OPTIMIZATION: PROBLEM EXPERIENCE */
+
+.problem-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 920px;
+  contain: layout paint style;
+}
+
+.problem-visual-placeholder {
+  min-height: 720px;
+  border-radius: 30px;
+  border: 1px solid rgba(86, 214, 141, .08);
+  background:
+    linear-gradient(
+      155deg,
+      rgba(17, 46, 29, .72),
+      rgba(6, 20, 12, .92)
+    );
+}
+
+.problem-experience {
+  contain: layout paint style;
+}
+
+.problem-experience:not(.is-active)
+  .problem-core-ring,
+.problem-experience:not(.is-active)
+  .problem-pulse,
+.problem-experience:not(.is-active)
+  .problem-card-glow {
+  animation-play-state: paused !important;
+}
+
+.problem-hologram-shell {
+  perspective: 760px;
+  box-shadow:
+    0 22px 56px rgba(0, 0, 0, .26),
+    inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.problem-core {
+  will-change: auto;
+}
+
+.problem-experience.is-active
+  .problem-core {
+  will-change: transform;
+}
+
+.problem-core-ring {
+  box-shadow:
+    0 0 18px rgba(86, 214, 141, .055);
+}
+
+.problem-core-ring.ring-a {
+  animation-duration: 18s;
+}
+
+.problem-core-ring.ring-b {
+  animation-duration: 24s;
+}
+
+.problem-core-ring.ring-c {
+  animation-duration: 20s;
+}
+
+.problem-core-center {
+  backdrop-filter: none;
+  box-shadow:
+    0 0 28px rgba(86, 214, 141, .12);
+}
+
+.problem-sensor {
+  backdrop-filter: none;
+  background: rgba(8, 31, 17, .9);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, .18);
+}
+
+.problem-card-glow {
+  filter: blur(28px);
+  opacity: .55;
+}
+
+.problem-tech-card {
+  transform-style: flat;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, .16),
+    inset 0 1px rgba(255, 255, 255, .035);
+}
+
+.problem-tech-card:hover {
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, .22);
+}
+
+@media (max-width: 768px) {
+  .problem-section {
+    contain-intrinsic-size: auto 1200px;
+  }
+
+  .problem-visual-placeholder {
+    min-height: 980px;
+  }
+
+  .problem-hologram-shell {
+    min-height: 330px;
+    perspective: none;
+  }
+
+  .problem-grid-floor {
+    opacity: .1;
+  }
+
+  .problem-orbit-data,
+  .problem-scan-line,
+  .problem-pulse {
+    display: none;
+  }
+
+  .problem-core {
+    width: 180px;
+    height: 180px;
+  }
+
+  .problem-core-ring.ring-a {
+    animation-duration: 28s;
+  }
+
+  .problem-core-ring.ring-b,
+  .problem-core-ring.ring-c {
+    animation: none !important;
+  }
+
+  .problem-tech-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .problem-core,
+  .problem-core-ring,
+  .problem-pulse,
+  .problem-scan-line,
+  .problem-card-glow {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .problem-tech-card {
+    transform: none !important;
+  }
+}

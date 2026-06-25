@@ -1,4 +1,9 @@
-import { useMemo, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  useMemo,
+  useState,
+} from 'react';
 import {
   ArrowLeft,
   BarChart3,
@@ -21,7 +26,13 @@ import {
 import { AnimatePresence, motion } from 'motion/react';
 import TechHeroVisual from '../components/website/TechHeroVisual';
 import OperatingModelVisual from '../components/website/OperatingModelVisual';
-import ProblemImpactVisual from '../components/website/ProblemImpactVisual';
+
+const ProblemImpactVisual = lazy(
+  () =>
+    import(
+      '../components/website/ProblemImpactVisual'
+    ),
+);
 
 type Language = 'ku' | 'ar' | 'en';
 
@@ -301,7 +312,18 @@ export default function App() {
               body={t.problem.body}
             />
 
-            <ProblemImpactVisual cards={t.problem.cards} />
+            <Suspense
+              fallback={
+                <div
+                  className="problem-visual-placeholder"
+                  aria-hidden="true"
+                />
+              }
+            >
+              <ProblemImpactVisual
+                cards={t.problem.cards}
+              />
+            </Suspense>
           </div>
         </section>
 
