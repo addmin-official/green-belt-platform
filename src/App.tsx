@@ -83,7 +83,7 @@ function DashboardPage({
               </h1>
 
               <p className="text-xs font-bold text-emerald-400">
-                داشبۆردی بەڕێوەبردنی پایلۆت
+                تەختەی بەڕێوەبردنی هەڵسەنگاندن
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ function DashboardPage({
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-xs font-bold transition hover:bg-white/10"
             >
               <ArrowLeft size={16} />
-              وێبسایت
+              گەڕانەوە بۆ گەڕانەوە بۆ وێبسایت
             </button>
 
             <button
@@ -108,7 +108,7 @@ function DashboardPage({
               className="inline-flex items-center gap-2 rounded-xl border border-red-400/15 bg-red-400/5 px-3 py-2.5 text-xs font-bold text-red-200 transition hover:bg-red-400/10"
             >
               <LogOut size={16} />
-              دەرچوون
+              چوونەدەرەوە
             </button>
           </div>
         </div>
@@ -119,16 +119,16 @@ function DashboardPage({
           <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-sky-400/20 bg-sky-400/5 px-4 py-3">
             <div>
               <strong className="block text-sm text-sky-200">
-                دۆخی بینەر
+                دۆخی تەنها-بینین
               </strong>
 
               <span className="mt-1 block text-xs text-slate-400">
-                تەنها مافی بینینت هەیە؛ هیچ گۆڕانکارییەک ڕێگەپێدراو نییە.
+                ئەم هەژمارە تەنها مافی بینینی زانیارییەکان هەیە و ناتوانێت هیچ گۆڕانکارییەک بکات.
               </span>
             </div>
 
             <span className="rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1 text-xs font-bold text-sky-200">
-              تەنها بینین
+              تەنها-بینین
             </span>
           </div>
         ) : null}
@@ -139,7 +139,7 @@ function DashboardPage({
 
         {!role ? (
           <div className="mt-5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm text-amber-200">
-            دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
+            ئاستی ئاستی دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
           </div>
         ) : null}
       </main>

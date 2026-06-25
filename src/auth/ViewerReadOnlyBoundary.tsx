@@ -9,7 +9,7 @@ type ViewerReadOnlyBoundaryProps = {
   children: ReactNode;
 };
 
-const mutationWords = [
+const blockedActionWords = [
   'زیاد',
   'دروستکردن',
   'دەستکاری',
@@ -20,6 +20,12 @@ const mutationWords = [
   'لابردن',
   'تۆمارکردن',
   'ناردن',
+  'ناردنی',
+  'پێشکەشکردن',
+  'پێشکەشکردنی',
+  'کارپێکردنەوە',
+  'ڕاگرتنی',
+  'دەستپێکردن',
   'add',
   'create',
   'edit',
@@ -30,8 +36,14 @@ const mutationWords = [
   'submit',
 ];
 
-function isMutationControl(element: HTMLElement): boolean {
-  const text = [
+function hideElement(element: HTMLElement) {
+  element.hidden = true;
+  element.setAttribute('aria-hidden', 'true');
+  element.setAttribute('tabindex', '-1');
+}
+
+function isEditingControl(element: HTMLElement): boolean {
+  const searchableText = [
     element.textContent,
     element.getAttribute('aria-label'),
     element.getAttribute('title'),
@@ -42,18 +54,30 @@ function isMutationControl(element: HTMLElement): boolean {
     .join(' ')
     .toLowerCase();
 
-  return mutationWords.some((word) =>
-    text.includes(word.toLowerCase()),
+  return blockedActionWords.some((word) =>
+    searchableText.includes(word.toLowerCase()),
   );
 }
 
 function applyReadOnlyMode(root: HTMLElement) {
+  /*
+   * Hide the complete editing panel rather than leaving an empty
+   * form shell visible to viewers.
+   */
+  root
+    .querySelectorAll<HTMLFormElement>('form')
+    .forEach((form) => {
+      const editingPanel =
+        form.closest<HTMLElement>('[data-edit-section="true"]') ??
+        form.parentElement?.parentElement ??
+        form;
+
+      hideElement(editingPanel);
+    });
+
   root
     .querySelectorAll<HTMLElement>(
       [
-        'input',
-        'textarea',
-        'select',
         '[contenteditable="true"]',
         'button[type="submit"]',
         '[data-edit-control="true"]',
@@ -65,20 +89,21 @@ function applyReadOnlyMode(root: HTMLElement) {
         '[data-action="delete"]',
       ].join(','),
     )
-    .forEach((element) => {
-      element.hidden = true;
-      element.setAttribute('aria-hidden', 'true');
-      element.setAttribute('tabindex', '-1');
-    });
+    .forEach(hideElement);
 
   root
     .querySelectorAll<HTMLElement>('button, a')
     .forEach((element) => {
-      if (isMutationControl(element)) {
-        element.hidden = true;
-        element.setAttribute('aria-hidden', 'true');
-        element.setAttribute('tabindex', '-1');
+      if (isEditingControl(element)) {
+        hideElement(element);
       }
+    });
+
+  root
+    .querySelectorAll<HTMLElement>('[draggable="true"]')
+    .forEach((element) => {
+      element.setAttribute('draggable', 'false');
+      element.style.pointerEvents = 'none';
     });
 }
 
@@ -106,35 +131,38 @@ export default function ViewerReadOnlyBoundary({
       subtree: true,
     });
 
-    const preventMutation = (event: Event) => {
+    const preventEditing = (event: Event) => {
       const target = event.target;
 
       if (!(target instanceof HTMLElement)) {
         return;
       }
 
+      const editingControl =
+        target.closest<HTMLElement>(
+          'form, [contenteditable="true"], button, a, [data-edit-control="true"]',
+        ) ?? target;
+
       if (
-        target.matches(
-          'input, textarea, select, [contenteditable="true"]',
-        ) ||
-        isMutationControl(target.closest('button, a') ?? target)
+        editingControl.matches('form, [contenteditable="true"]') ||
+        isEditingControl(editingControl)
       ) {
         event.preventDefault();
         event.stopPropagation();
       }
     };
 
-    root.addEventListener('submit', preventMutation, true);
-    root.addEventListener('change', preventMutation, true);
-    root.addEventListener('input', preventMutation, true);
-    root.addEventListener('click', preventMutation, true);
+    root.addEventListener('submit', preventEditing, true);
+    root.addEventListener('change', preventEditing, true);
+    root.addEventListener('input', preventEditing, true);
+    root.addEventListener('click', preventEditing, true);
 
     return () => {
       observer.disconnect();
-      root.removeEventListener('submit', preventMutation, true);
-      root.removeEventListener('change', preventMutation, true);
-      root.removeEventListener('input', preventMutation, true);
-      root.removeEventListener('click', preventMutation, true);
+      root.removeEventListener('submit', preventEditing, true);
+      root.removeEventListener('change', preventEditing, true);
+      root.removeEventListener('input', preventEditing, true);
+      root.removeEventListener('click', preventEditing, true);
     };
   }, [enabled]);
 

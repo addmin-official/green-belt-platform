@@ -7,70 +7,91 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    function userDocument() {
+    function userData() {
       return get(
         /databases/$(database)/documents/users/$(request.auth.uid)
-      );
+      ).data;
     }
 
-    function hasRole(role) {
+    function hasActiveRole(role) {
       return signedIn()
-        && userDocument().data.active == true
-        && userDocument().data.role == role;
+        && userData().active == true
+        && userData().role == role;
     }
 
-    function canManageDemo() {
-      return hasRole("admin") || hasRole("operator");
+    function isAdmin() {
+      return hasActiveRole("admin");
+    }
+
+    function isOperator() {
+      return hasActiveRole("operator");
+    }
+
+    function isViewer() {
+      return hasActiveRole("viewer");
+    }
+
+    function canReadPlatform() {
+      return isAdmin() || isOperator() || isViewer();
+    }
+
+    function canManagePlatform() {
+      return isAdmin() || isOperator();
     }
 
     match /publicContent/{document=**} {
       allow read: if true;
-      allow write: if hasRole("admin");
+      allow write: if isAdmin();
     }
 
     match /users/{userId} {
       allow read: if signedIn()
         && (
           request.auth.uid == userId
-          || hasRole("admin")
+          || isAdmin()
         );
 
-      allow create, update, delete: if hasRole("admin");
+      allow create, update, delete: if isAdmin();
     }
 
     match /restaurants/{document=**} {
-      allow read: if signedIn();
-      allow write: if canManageDemo();
+      allow read: if canReadPlatform();
+      allow create, update: if canManagePlatform();
+      allow delete: if isAdmin();
     }
 
     match /collections/{document=**} {
-      allow read: if signedIn();
-      allow write: if canManageDemo();
+      allow read: if canReadPlatform();
+      allow create, update: if canManagePlatform();
+      allow delete: if isAdmin();
     }
 
     match /compostBatches/{document=**} {
-      allow read: if signedIn();
-      allow write: if canManageDemo();
+      allow read: if canReadPlatform();
+      allow create, update: if canManagePlatform();
+      allow delete: if isAdmin();
     }
 
     match /impactProjects/{document=**} {
-      allow read: if signedIn();
-      allow write: if canManageDemo();
+      allow read: if canReadPlatform();
+      allow create, update: if canManagePlatform();
+      allow delete: if isAdmin();
     }
 
     match /pilotMetrics/{document=**} {
-      allow read: if signedIn();
-      allow write: if canManageDemo();
+      allow read: if canReadPlatform();
+      allow create, update: if canManagePlatform();
+      allow delete: if isAdmin();
     }
 
     match /announcements/{document=**} {
-      allow read: if signedIn();
-      allow write: if hasRole("admin");
+      allow read: if canReadPlatform();
+      allow create, update, delete: if isAdmin();
     }
 
     match /auditLogs/{document=**} {
-      allow read: if hasRole("admin");
-      allow create: if signedIn();
+      allow read: if canReadPlatform();
+      allow create: if canManagePlatform();
       allow update, delete: if false;
     }
 

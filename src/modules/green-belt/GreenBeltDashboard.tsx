@@ -29,13 +29,13 @@ import { motion, AnimatePresence } from 'motion/react';
 // Kurdish Sorani translation map for the entire dashboard UI
 const DK = {
   title: "کەمەربەندی سەوز",
-  subtitle: "پلاتفۆرمی ژیری ئابووریی بازنەیی و تۆماری نەمام و سەرچاوە بێوەیەکانی ژینگە",
-  overview: "داشبۆردی سەرەکی",
+  subtitle: "پلاتفۆرمی زیرەکی ئابووریی بازنەیی و تۆماری سەرچاوە ژینگەییەکان",
+  overview: "تەختەی چاودێری سەرەکی",
   restaurants: "تۆڕی ڕێستورانتەکان",
-  wasteOps: "خشتەی گواستنەوە و کۆکردنەوە",
+  wasteOps: "چاودێری گواستنەوە و کۆکردنەوە",
   compostCenter: "زنجیرەی کۆمپوستکردن",
   treeImpact: "نەخشەی کاریگەری درەختەکان",
-  partnerships: "ڕاوێژکاران و هاوبەشان",
+  partnerships: "ڕاوێژکاران و هاوبەشەکان",
   
   // KPI Titles
   foodWasteCollected: "پاشماوەی کۆکراوە",
@@ -65,7 +65,7 @@ const DK = {
 const INITIAL_TREE_PROJECTS = [
   { id: 'tree-proj-01', name: 'کەمەربەندی سەوزی کێوی سەفین', treesSupported: 5200, compostReceived: 10.5, supervisor: 'د. ئالان ڕۆستەم', survivalRate: 98.2, description: 'پڕۆژەی چاندنی نەمام لە لێوارەکانی کێوی سەفین بۆ ڕێگریکردن لە ڕاماڵینی خاک و بنیاتنانەوەی پۆشەری سەوزایی.' },
   { id: 'tree-proj-02', name: 'کەمربەندی دەوروبەری هەولێر', treesSupported: 3600, compostReceived: 7.8, supervisor: 'لێپرسراو شێروان قادر', survivalRate: 95.8, description: 'پشتوێنی سەوزی باکووری شاری هەولێر بۆ کەمکردنەوەی کاریگەری تۆز و خۆڵ و نزمکردنەوەی پلەی گەرمی هاوین.' },
-  { id: 'tree-proj-03', name: 'سەوزایی دامێنی شاخی گۆیژە', treesSupported: 2150, compostReceived: 4.5, supervisor: 'ئەندازیار هێرش ڕەحمان', survivalRate: 94.6, description: 'دارستانکردن و خزمەتکردنی نەمامەکانی شاخی گۆیژە بە بەکارهێنانی سسیستمی ئاودێری مۆدێرن و کۆمپۆستی ئۆرگانیک.' },
+  { id: 'tree-proj-03', name: 'سەوزایی دامێنی شاخی گۆیژە', treesSupported: 2150, compostReceived: 4.5, supervisor: 'ئەندازیار هێرش ڕەحمان', survivalRate: 94.6, description: 'دارستانکردن و خزمەتکردنی نەمامەکانی شاخی گۆیژە بە بەکارهێنانی سسیستەمی ئاودێری مۆدێرن و کۆمپوستی ئۆرگانیک.' },
   { id: 'tree-proj-04', name: 'ناوچەی پارێزراوی بارزان', treesSupported: 1550, compostReceived: 3.2, supervisor: 'د. کاروان عومەر', survivalRate: 98.9, description: 'پەرەپێدانی زیندەیی و چاندنی داربەڕووی بومی لە ناوچە شاخاوییەکان بە هاوکاری کۆمەڵگەی خۆجێیی.' }
 ];
 
@@ -73,7 +73,7 @@ const INITIAL_TREE_PROJECTS = [
 const INITIAL_RESTAURANTS = [
   { id: 'rest-01', name: 'چێشتخانەی بێستوونی دێرین', region: 'هەولێر', wasteCollected: 4850, size: 'گەورە', qualityScore: 98, status: 'چالاک', certificate: 'پلاتینیۆم ژینگەیی', moistureAvg: 55, contact: 'erbil@bestoon.com' },
   { id: 'rest-02', name: 'چێشتخانەی لوتکەی کێوی گۆیژە', region: 'سلێمانی', wasteCollected: 4100, size: 'ناوەند', qualityScore: 96, status: 'چالاک', certificate: 'زێڕینی ژینگەیی', moistureAvg: 58, contact: 'suli@goizhamount.com' },
-  { id: 'rest-03', name: 'کافتریای زانکۆی سەڵاحەدین', region: 'هەولێر', wasteCollected: 3120, size: 'ناوەند', qualityScore: 94, status: 'چالاک', certificate: 'کۆمپۆستی ژینگەیی', moistureAvg: 57, contact: 'zanko@su.edu.krd' },
+  { id: 'rest-03', name: 'کافتریای زانکۆی سەڵاحەدین', region: 'هەولێر', wasteCollected: 3120, size: 'ناوەند', qualityScore: 94, status: 'چالاک', certificate: 'کۆمپوستی ژینگەیی', moistureAvg: 57, contact: 'zanko@su.edu.krd' },
   { id: 'rest-04', name: 'چێشتخانەی پردی دەلال', region: 'دهۆک', wasteCollected: 2330, size: 'بچووک', qualityScore: 92, status: 'چالاک', certificate: 'دۆستی ژینگە', moistureAvg: 59, contact: 'delal@duhok.krd' },
   { id: 'rest-05', name: 'چێشتخانەی پارکی ئازادی', region: 'سلێمانی', wasteCollected: 1800, size: 'بچووک', qualityScore: 95, status: 'چالاک', certificate: 'ڕیسایکڵەری زێڕین', moistureAvg: 56, contact: 'azadi_restaurant@suli.krd' },
   { id: 'rest-06', name: 'چێشتخانەی لالش هەولێر', region: 'هەولێر', wasteCollected: 1200, size: 'ناوەند', qualityScore: 90, status: 'چالاک', certificate: 'دۆستی ژینگە', moistureAvg: 60, contact: 'lalish@erbil.krd' },
@@ -82,24 +82,59 @@ const INITIAL_RESTAURANTS = [
 
 // Composting biological batches in Kurdish Sorani
 const INITIAL_BATCHES = [
-  { id: 'کۆد-٠١', name: 'بەرھەمی تاقیکاری زیندەیی کەمەربەندی باکوور', moisture: 54, temp: 62, durationDays: 14, state: 'قۆناغی گەرمی چالاک', certStatus: 'پشکنین سەرکەوتوو بوو', compostTons: 6.8 },
-  { id: 'کۆد-٠٢', name: 'خۆراکی کۆمپۆستی شاخی سەفین', moisture: 58, temp: 58, durationDays: 28, state: 'قۆناغی نیشتن', certStatus: 'لە ژێر وردبینیدایە', compostTons: 5.5 },
+  { id: 'کۆد-٠١', name: 'بەرهەمی تاقیکاری زیندەیی کەمەربەندی باکوور', moisture: 54, temp: 62, durationDays: 14, state: 'قۆناغی گەرمی چالاک', certStatus: 'پشکنین سەرکەوتوو بوو', compostTons: 6.8 },
+  { id: 'کۆد-٠٢', name: 'خۆراکی کۆمپوستی شاخی سەفین', moisture: 58, temp: 58, durationDays: 28, state: 'قۆناغی نیشتن', certStatus: 'لە ژێر وردبینیدایە', compostTons: 5.5 },
   { id: 'کۆد-٠٣', name: 'تێکەڵەی خۆڵ و بایۆچار بۆ کێوی گۆیژە', moisture: 50, temp: 31, durationDays: 45, state: 'ئامادەیە بۆ بەکارهێنان', certStatus: 'پشکنین سەرکەوتوو بوو', compostTons: 9.7 }
 ];
 
 // Experts in Kurdish Sorani
 const EXPERT_PROFILES = [
-  { name: 'پڕۆفیسۆر ئالان ڕۆستەم', role: 'دکتۆرای وردبینینی بایۆ-کۆمپۆست', field: 'مایکرۆبۆلۆجی خاک', institution: 'زانکۆی سەڵاحەدین', bio: 'پسپۆڕ لە پەرەپێدانی زیندەیی پێکهاتەی خاک و گۆڕینی پاشماوە خۆراکییەکان بۆ ماددەی سودبەخش بۆ نەمامەکان.', img: 'ئار' },
-  { name: 'دکتۆر کاروان عومەر', role: 'ڕاوێژکاری باڵای کشتوکاڵی ژینگەیی', field: 'کیمیای خاک', institution: 'دەستەی پاراستن و چاککردنی ژینگە', bio: 'شارەزای سەرپەرشتیکردنی تاقیگە لە جۆرێتی و کەمکردنەوەی ترشێتی خاک بە کۆمپۆستی ئۆرگانیک.', img: 'کع' },
-  { name: 'شێروان قادر', role: 'بەڕێوەبەری نووسینگەی لوتکەی سەوز', field: 'ئیکۆلۆجی و دارستان', institution: 'دەزگای روانگە', bio: 'سەرپەرشتیاری دابەشکردنی نەمام و چاندنی درەخت لە کەمەربەند پڕۆژەکانی کوردستان.', img: 'شق' },
-  { name: 'ئینگەر سورێنسن', role: 'ڕاوێژکاری باڵای ئابووریی بازنەیی', field: 'چاودێری خولی کاربۆن', institution: 'ڕێکخراوی DCA دانیمارکی', bio: 'سەرپەرشتیاری گشتی گۆڕینی لۆجیستیکی چێشتخانەکان بۆ مۆدێلی دۆستی ژینگە.', img: 'ئس' },
-  { name: 'هێرش ڕەحمان', role: 'پسپۆڕی وردبینی دارایی و کاریگەری ژینگەیی', field: 'ژمێریاری گازی زیانبەخش', institution: 'سندوقی وەبەرهێنانی سەوز', bio: 'پشکنەری بڕی کەمکرنەوەی گازە ژەهراوییەکان لە پاڵپشتی سیستمەکوردییەکە.', img: 'هر' }
+  {
+    name: 'پڕۆفیسۆر ئالان ڕۆستەم',
+    role: 'پسپۆڕی کۆمپوستی زیندەیی',
+    field: 'زیندەناسی وردەزیندەوەرانی خاک',
+    institution: 'زانکۆی سەڵاحەدین',
+    bio: 'پسپۆڕ لە باشترکردنی پێکهاتەی خاک و گۆڕینی پاشماوەی خۆراک بۆ ماددەیەکی سوودبەخش بۆ نەمام و درەخت.',
+    img: 'ئار',
+  },
+  {
+    name: 'دکتۆر کاروان عومەر',
+    role: 'ڕاوێژکاری باڵای کشتوکاڵی ژینگەیی',
+    field: 'کیمیای خاک',
+    institution: 'دەستەی پاراستن و چاککردنی ژینگە',
+    bio: 'شارەزا لە هەڵسەنگاندنی جۆرێتی خاک و کەمکردنەوەی ترشێتیی خاک بە بەکارهێنانی کۆمپوستی ئۆرگانیک.',
+    img: 'کع',
+  },
+  {
+    name: 'شێروان قادر',
+    role: 'بەڕێوەبەری نووسینگەی لوتکەی سەوز',
+    field: 'ژینگەناسی و دارستان',
+    institution: 'دەزگای ڕوانگە',
+    bio: 'سەرپەرشتیاری دابەشکردنی نەمام و چاندنی درەخت لە پڕۆژەکانی کەمەربەندی سەوزی کوردستان.',
+    img: 'شق',
+  },
+  {
+    name: 'ئینگەر سورێنسن',
+    role: 'ڕاوێژکاری باڵای ئابووریی بازنەیی',
+    field: 'چاودێری خولی کاربۆن',
+    institution: 'ڕێکخراوی DCA ـی دانیمارک',
+    bio: 'ڕاوێژکار لە گۆڕینی زنجیرەی گواستنەوەی چێشتخانەکان بۆ شێوازێکی جێگیر و دۆستی ژینگە.',
+    img: 'ئس',
+  },
+  {
+    name: 'هێرش ڕەحمان',
+    role: 'پسپۆڕی وردبینی دارایی و کاریگەری ژینگەیی',
+    field: 'پێوانەکردنی گازە زیانبەخشەکان',
+    institution: 'سندوقی وەبەرهێنانی سەوز',
+    bio: 'هەڵسەنگێنەری کەمکردنەوەی گازە زیانبەخشەکان و کاریگەریی دارایی و ژینگەیی پڕۆژەکە.',
+    img: 'هر',
+  },
 ];
 
 // Logistics routes in Kurdish
 const INITIAL_ROUTES = [
-  { id: 'ڕێگا-٠١', name: 'هێڵی کەمەربەندی باکووری هەولێر', stops: 4, vehicle: 'ئۆتۆمبێلی کارەبایی پاشماوە ٠١', driver: 'سامان کارزان', loadRatio: 82, status: 'لە ڕێگادایە', frequency: 'رۆژانە' },
-  { id: 'ڕێگا-٠٢', name: 'هێڵی گواستنەوەی ناوشاری سلێمانی', stops: 3, vehicle: 'ئۆتۆمبێلی کارەبایی پاشماوە ٠٢', driver: 'ئاری ئەحمەد', loadRatio: 65, status: 'کۆتایی هات', frequency: 'رۆژانە' },
+  { id: 'ڕێگا-٠١', name: 'هێڵی کەمەربەندی باکووری هەولێر', stops: 4, vehicle: 'ئۆتۆمبێلی کارەبایی پاشماوە ٠١', driver: 'سامان کارزان', loadRatio: 82, status: 'لە ڕێگادایە', frequency: 'ڕۆژانە' },
+  { id: 'ڕێگا-٠٢', name: 'هێڵی گواستنەوەی ناوشاری سلێمانی', stops: 3, vehicle: 'ئۆتۆمبێلی کارەبایی پاشماوە ٠٢', driver: 'ئاری ئەحمەد', loadRatio: 65, status: 'کۆتایی هات', frequency: 'ڕۆژانە' },
   { id: 'ڕێگا-٠٣', name: 'هێڵی کۆکردنەوەی چێشتخانەکانی دهۆک', stops: 2, vehicle: 'ئۆتۆمبێلی هایبرید ٠٤', driver: 'دلاوەر بارزانی', loadRatio: 45, status: 'ئامادەباشی', frequency: 'هەفتانە دوو ڕۆژ' }
 ];
 
@@ -116,8 +151,8 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
   
   // Interactive Simulator and Logs (100% Sorani Kurdish)
   const [auditLogs, setAuditLogs] = useState<string[]>([
-    "سیستمەکە دەستی بەکارکردن کرد: کۆنتڕۆڵی باڵای کەمەربەندی سەوز کارایە.",
-    "ئۆپەراسیۆن: ئۆتۆمبێلی کارەبایی ٠١ شحنەکانی گەیاندە وێستگەی کۆمپۆست.",
+    "سیستەمەکە دەستی بەکارکردن کرد: چاودێریی باڵای کەمەربەندی سەوز کارایە.",
+    "کارگێڕی: ئۆتۆمبێلی کارەبایی ٠١ بارکانی گەیاندە وێستگەی کۆمپوست.",
     "تاقیگە: پشکنینی پۆتاسیۆم و نایترۆجین لە دەستپێشخەری بەرهەمی تاقیکاری سەرکەوتوو بوو.",
     "ژینگە: کەمەربەندی سەوزی کێوی سەفین گەشەی سروشتی نەمامەکانی بە ڕێژەی ٩٨.٢٪ ڕاگەیاند."
   ]);
@@ -181,7 +216,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
       return r;
     }));
 
-    const systemMessage = `سەرپەرشتیاری مەیدانی: ڕێژەی ${weightVal} کگم پاشماوە بە ڕطوبەی ${moistureVal}% لە چێشتخانەی "${targetRest.name}" وەرگیرا.`;
+    const systemMessage = `سەرپەرشتیاری مەیدانی: ڕێژەی ${weightVal} کگم پاشماوە بە شێداریی ${moistureVal}% لە چێشتخانەی "${targetRest.name}" وەرگیرا.`;
     setAuditLogs(prev => [systemMessage, ...prev.slice(0, 5)]);
     
     setShowLogSuccess(true);
@@ -201,12 +236,12 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
       temp: 61,
       durationDays: 1,
       state: 'قۆناغی گەرمی چالاک',
-      certStatus: 'لە ژێڕ وردبینیدایە',
+      certStatus: 'لە ژێر وردبینیدایە',
       compostTons: tons
     };
 
     setBatches(prev => [newBatch, ...prev]);
-    setAuditLogs(prev => [`تۆماری ئۆرگانیک: بەرھەمی نوێی کۆمپۆست بە ناوی "${newBatchName}" بە توانای ${tons} تەن بە سەرکەوتوویی جێگیرکرا.`, ...prev.slice(0, 5)]);
+    setAuditLogs(prev => [`تۆماری ئۆرگانیک: بەرهەمی نوێی کۆمپوست بە ناوی "${newBatchName}" بە توانای ${tons} تەن بە سەرکەوتوویی جێگیرکرا.`, ...prev.slice(0, 5)]);
     
     setNewBatchName('');
     setShowBatchSuccess(true);
@@ -231,19 +266,19 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           <div className="text-right">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-black text-[#cca553]">
-                داتای نمایشی بۆ پایلۆتی ٩٠ ڕۆژە
+                داتای نمایشی بۆ هەڵسەنگاندنی ٩٠ ڕۆژە
               </span>
               <span className="text-[10px] bg-red-950/85 text-red-400 border border-red-900/40 px-2 py-0.5 rounded font-bold">
-                تەنها فۆڕمی دۆکیومێنتاری دیمۆ
+                تەنها بۆ پیشاندانی نموونە
               </span>
             </div>
             <p className="text-xs text-slate-300 mt-1 max-w-4xl leading-relaxed">
-              ئەم پلاتفۆرمە لەسەر داتای خەمڵێنراو و پێشبینیکراوی قۆناغی تاقیکاری پایلۆتی ٩٠ ڕۆژە کاردەکات لۆ پێشاندانی توانای پێشبینیکراو و کاریگەرییە ژینگەییەکانی کەمەربەندی سەوز.
+              ئەم پلاتفۆرمە لەسەر داتای خەمڵێنراو و پێشبینیکراوی قۆناغی تاقیکاری هەڵسەنگاندنی ٩٠ ڕۆژە کاردەکات بۆ پیشاندانی توانای پێشبینیکراو و کاریگەرییە ژینگەییەکانی کەمەربەندی سەوز.
             </p>
           </div>
         </div>
         <div className="bg-[#cca553]/10 text-[#cca553] text-[11px] font-bold px-3.5 py-1.5 rounded-full border border-[#cca553]/25 shrink-0">
-          داتای نمایشی بۆ پایلۆتی ٩٠ ڕۆژە
+          داتای نمایشی بۆ هەڵسەنگاندنی ٩٠ ڕۆژە
         </div>
       </div>
 
@@ -255,7 +290,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right">
             <span className="text-[11px] text-emerald-400 font-bold tracking-wider block">
-              باسی چاودێری ڕاستەوخۆ (چالاکییەکانی مەیدان)
+              چاودێری ڕاستەوخۆ (چالاکییەکانی مەیدان)
             </span>
             <p className="text-xs text-emerald-200 font-mono italic mt-0.5 max-w-2xl">
               {auditLogs[0]}
@@ -265,6 +300,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
         
         <div className="flex items-center gap-2">
           <button 
+            data-edit-control="true"
             onClick={() => setIsSimulatorRunning(!isSimulatorRunning)} 
             className="px-3.5 py-1.5 text-xs font-semibold rounded border flex items-center gap-1.5 cursor-pointer transition-all bg-[#10b981]/10 text-[#10b981] border-[#10b981]/30 hover:bg-[#10b981]/20"
           >
@@ -292,13 +328,13 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right mt-2">
             <div className="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold inline-block mb-1">
-              پڕۆجێکشنی پایلۆتی ٩٠ ڕۆژە
+              پێشبینیی هەڵسەنگاندنی ٩٠ ڕۆژە
             </div>
             <p className="text-xl font-bold text-white font-mono">
               {DK.valFoodWasteCollected}
             </p>
             <p className="text-[10px] text-[#cca553] mt-1.5 font-semibold">
-              سەرکەوتوو بەرزترین ڕێژە
+              بەرزترین ڕێژەی تۆمارکراو
             </p>
           </div>
         </div>
@@ -318,7 +354,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right mt-2">
             <div className="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold inline-block mb-1">
-              پڕۆجێکشنی پایلۆتی ٩٠ ڕۆژە
+              پێشبینیی هەڵسەنگاندنی ٩٠ ڕۆژە
             </div>
             <p className="text-xl font-bold text-white font-mono">
               {DK.valCompostProduced}
@@ -344,7 +380,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right mt-2">
             <div className="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-bold inline-block mb-1">
-              ئامانجی پایلۆت
+              ئامانجی هەڵسەنگاندن
             </div>
             <p className="text-xl font-bold text-white font-mono">
               {DK.valActiveRestaurants}
@@ -370,7 +406,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right mt-2">
             <div className="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-bold inline-block mb-1">
-              ئامانجی پایلۆت
+              ئامانجی هەڵسەنگاندن
             </div>
             <p className="text-xl font-bold text-white font-mono">
               {DK.valTreesSupported}
@@ -396,7 +432,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
           </div>
           <div className="text-right mt-2">
             <div className="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold inline-block mb-1">
-              پڕۆجێکشنی پایلۆتی ٩٠ ڕۆژە
+              پێشبینیی هەڵسەنگاندنی ٩٠ ڕۆژە
             </div>
             <p className="text-xl font-bold text-white font-mono">
               {DK.valCarbonReduction}
@@ -428,7 +464,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
               {DK.valEcoImpactScore}
             </p>
             <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
-              پلەیی یەکەمی فەرمی
+              پلەی یەکەمی فەرمی
             </p>
           </div>
         </div>
@@ -471,7 +507,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
             transition={{ duration: 0.2 }}
           >
             
-            {/* TAB 1: EXECUTIVE OVERVIEW (داشبۆردی سەرەکی) */}
+            {/* TAB 1: EXECUTIVE OVERVIEW (تەختەی چاودێری سەرەکی) */}
             {activeTab === 'overview' && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
@@ -521,7 +557,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                         <Database className="w-6 h-6 text-[#10b981]" />
                       </div>
                       <h4 className="text-xs font-bold text-white">٣. خۆڵکردنەوە و شیبوونەوە</h4>
-                      <p className="text-[10px] text-slate-400 mt-1 uppercase font-mono">بەرهەمی کۆمپۆستی بەپیت</p>
+                      <p className="text-[10px] text-slate-400 mt-1 uppercase font-mono">بەرهەمی کۆمپوستی بەپیت</p>
                       <p className="text-[11px] text-emerald-400 font-mono mt-0.5 font-bold">٢٢.٠ تەن نوێ</p>
                     </div>
 
@@ -564,7 +600,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                       <div className="flex justify-between text-[10px] text-slate-500 font-bold relative z-10 w-full px-2">
                         <span>دەستپێکردنی پڕۆژە</span>
                         <span>تەواوبوونی قۆناغی یەکەم</span>
-                        <span>لوتکەی کۆکردنەوە و کۆمپۆست</span>
+                        <span>لوتکەی کۆکردنەوە و کۆمپوست</span>
                         <span>موسمی چاندنی نەمامەکان</span>
                       </div>
                     </div>
@@ -579,11 +615,11 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                     <div className="bg-gradient-to-br from-[#123019] to-[#0a1f10] border-2 border-[#cca553]/40 rounded-2xl p-5 mb-5 shadow-lg">
                       <h4 className="text-sm font-black text-[#cca553] mb-3 flex items-center gap-1.5 border-b border-[#cca553]/25 pb-2">
                         <Layers className="w-4 h-4 text-[#cca553]" />
-                        دەفتەری دۆخی پایلۆت
+                        دەفتەری دۆخی هەڵسەنگاندن
                       </h4>
                       <div className="flex flex-col gap-2.5 text-xs">
                         <div className="flex justify-between items-center bg-[#051109] px-3 py-2 rounded-lg border border-[#cca553]/15">
-                          <span className="text-slate-400">دۆخی پایلۆت:</span>
+                          <span className="text-slate-400">دۆخی هەڵسەنگاندن:</span>
                           <span className="text-[#cca553] font-bold">لە قۆناغی ئامادەکاری</span>
                         </div>
                         <div className="flex justify-between items-center bg-[#051109] px-3 py-2 rounded-lg border border-[#cca553]/15">
@@ -606,7 +642,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                       ڕاپۆرتی کاریگەری و هەڵسەنگاندن
                     </h3>
                     <p className="text-xs text-slate-400 border-b border-[#10b981]/10 pb-4 mb-4">
-                      ڕاپۆرت و پێوەرەکانی سەوزایی و خولی ئابووری کە لەژێر وردبینی پێوەرە نێودەوڵەتییەکان جێگیرکراوە لۆ کاڵای کشتوکاڵی بەپیت.
+                      ڕاپۆرت و پێوەرەکانی سەوزایی و خولی ئابووری کە لەژێر وردبینی پێوەرە نێودەوڵەتییەکان جێگیرکراوە بۆ کاڵای کشتوکاڵی بەپیت.
                     </p>
 
                     <div className="flex flex-col gap-4">
@@ -637,7 +673,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                           <p className="text-[10px] text-slate-400 mt-0.5">دوورخستنەوەی پاشماوەکان لە زاڵبوونی پاش پاشماوەکان</p>
                         </div>
                         <span className="text-xs font-mono font-bold text-[#cca553] bg-amber-900/20 px-2 py-0.5 rounded">
-                          {(totalWaste * 0.9).toFixed(1)} تەن کۆنتڕۆڵ
+                          {(totalWaste * 0.9).toFixed(1)} تەن چاودێری
                         </span>
                       </div>
 
@@ -646,7 +682,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
 
                   <div className="mt-5 pt-4 border-t border-[#10b981]/10 bg-gradient-to-r from-emerald-950/20 to-transparent p-3 rounded-lg border border-[#10b981]/10 text-right">
                     <p className="text-[11px] text-emerald-300 leading-relaxed italic">
-                      "لەکاتی بەکارهێنانی کەرەستە ئۆرگانیکەکان بۆ بەرهەمهێنانی کۆمپۆست، دڵنیایی دەدرێت کە ژینگە دەپارێزرێت و کەمەربەندی سەوزی کوردستان بەهێز دەکرێت." 
+                      "لەکاتی بەکارهێنانی کەرەستە ئۆرگانیکەکان بۆ بەرهەمهێنانی کۆمپوست، دڵنیایی دەدرێت کە ژینگە دەپارێزرێت و کەمەربەندی سەوزی کوردستان بەهێز دەکرێت." 
                       <span className="block mt-1 font-bold text-[9px] text-[#cca553]">— ڕاپۆرتی بڵاوکراوەی هاوبەشی دەزگای روانگە و ڕێکخراوی DCA</span>
                     </p>
                   </div>
@@ -693,7 +729,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                           <th className="pb-3 text-center">پاشماوەی کۆکراوە (کگم)</th>
                           <th className="pb-3 text-center">نمرەی دڵنیایی جۆرێتی</th>
                           <th className="pb-3 text-center">بڕوانامە ژینگەیی</th>
-                          <th className="pb-3 pl-2 text-left">ئۆپەراسیۆن</th>
+                          <th className="pb-3 pl-2 text-left">کارگێڕی</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -770,7 +806,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                         </div>
 
                         <div>
-                          <label className="block text-[11px] text-slate-350 mb-1.5 font-bold">ڕێژەی شێ یان ڕطوبە (٪)</label>
+                          <label className="block text-[11px] text-slate-350 mb-1.5 font-bold">ڕێژەی شێداری (٪)</label>
                           <input 
                             type="number"
                             value={newLogMoisture}
@@ -785,7 +821,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                         className="w-full bg-gradient-to-r from-emerald-900 to-[#125327] hover:from-emerald-800 hover:to-green-700 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow cursor-pointer transition-all flex items-center justify-center gap-1.5"
                       >
                         <Plus className="w-4 h-4 text-[#cca553]" />
-                        تۆمارکردنی شحنة لە دەفتەرەکەدا
+                        تۆمارکردنی بار لە دەفتەرەکەدا
                       </button>
                     </form>
 
@@ -798,7 +834,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                           className="mt-4 p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs flex items-center gap-2"
                         >
                           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                          <span>شحنةكە بە سەرکەوتوویی تۆمارکرا! پێوەرەکانی سەوزایی و جێگیری نوێکرانەوە.</span>
+                          <span>باركە بە سەرکەوتوویی تۆمارکرا! پێوەرەکانی سەوزایی و جێگیری نوێکرانەوە.</span>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -806,7 +842,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
 
                   <div className="mt-4 bg-[#08170d] border border-slate-900 p-3 rounded-xl">
                     <p className="text-[10px] text-slate-500 leading-normal">
-                      پرۆتۆکۆلی پاراستن: هەموو شحنةیەک بە شێوەیەکی فەرمی پێناسی تایبەت وەردەگرێت و مۆری نێودەوڵەتی وەردەگرێت بۆ پاراستنی متمانەی کاریگەری ژینگەیی.
+                      پرۆتۆکۆلی پاراستن: هەموو باریەک بە شێوەیەکی فەرمی پێناسی تایبەت وەردەگرێت و مۆری نێودەوڵەتی وەردەگرێت بۆ پاراستنی متمانەی کاریگەری ژینگەیی.
                     </p>
                   </div>
                 </div>
@@ -829,7 +865,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                       <p className="text-xs text-slate-400">هێڵەکانی ئۆتۆمبێلی پاک بۆ گەیاندنی خێرا بۆ کۆگا فەرمییەکان</p>
                     </div>
                     <span className="text-[11px] font-mono bg-[#10b981]/10 text-emerald-400 border border-[#10b981]/20 px-3 py-1 rounded-full">
-                      {routes.length} هێڵی چالاک لۆ ئەمرۆ
+                      {routes.length} هێڵی چالاک بۆ ئەمرۆ
                     </span>
                   </div>
 
@@ -868,7 +904,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                   <div>
                     <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-1.5 border-b border-[#10b981]/10 pb-3">
                       <Sparkles className="w-4 h-4 text-[#cca553]" />
-                      ڕووداوە چوونەژوورەوەکانی سیستم لێرەدا
+                      تۆماری ڕووداوەکانی سیستەم
                     </h3>
                     <p className="text-xs text-slate-400 mb-4">
                       ئەم تۆمارانە ڕووداو مەیدانییەکانی لۆجیستیک دەخەنە بەردەم بەڕێوەبەری پڕۆژە لە هەموو ناوچەکان بە سەرکەوتوویی:
@@ -886,10 +922,11 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
 
                   <div className="mt-4 pt-3 border-t border-slate-800 text-center">
                     <button 
-                      onClick={() => setAuditLogs([`تۆماری دەستی: نوێکردنەوە لە کاتی ڕاستەقینەدا گەیشت لە کەمەربەندی ناوەڕاست.`, ...auditLogs.slice(0, 4)])}
+                      data-edit-control="true"
+            onClick={() => setAuditLogs([`تۆماری دەستی: نوێکردنەوە لە کاتی ڕاستەقینەدا گەیشت لە کەمەربەندی ناوەڕاست.`, ...auditLogs.slice(0, 4)])}
                       className="text-[#cca553] text-[11px] font-bold hover:underline"
                     >
-                      نوێکردنەوەی جێگیری تۆمارەکان مەیدانییەکان
+                      نوێکردنەوەی تۆمارە مەیدانییەکان
                     </button>
                   </div>
                 </div>
@@ -907,12 +944,12 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                     <div>
                       <h3 className="text-base font-bold text-white flex items-center gap-2">
                         <Flame className="w-5 h-5 text-[#cca553]" />
-                        سجلی دەستپێشخەری بەرهەمهێنانی کۆمپۆستی بەپیت
+                        تۆماری دەستەکانی بەرهەمهێنانی کۆمپوستی بەپیت
                       </h3>
-                      <p className="text-xs text-slate-400">چاودێری پلەی گەرمی و شێ لە پاشماوەکاندا لۆ دەرهێنانی باشترین پێکهاتە</p>
+                      <p className="text-xs text-slate-400">چاودێری پلەی گەرمی و شێ لە پاشماوەکاندا بۆ دەرهێنانی باشترین پێکهاتە</p>
                     </div>
                     <span className="bg-[#10b981]/10 text-emerald-400 border border-[#10b981]/25 px-3 py-1 rounded-full text-xs font-mono font-bold">
-                      {batches.length} دەستە یان بەرھەم
+                      {batches.length} دەستەی بەرهەم
                     </span>
                   </div>
 
@@ -929,7 +966,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                           
                           <div className="grid grid-cols-3 gap-2 py-2.5 bg-[#0b2112]/40 border border-slate-800/40 rounded-xl px-2">
                             <div className="text-center">
-                              <p className="text-[9px] text-slate-500 font-bold">ڕێژەی ڕطوبە</p>
+                              <p className="text-[9px] text-slate-500 font-bold">ڕێژەی شێداری</p>
                               <p className="text-xs font-bold text-blue-300 font-mono mt-0.5 flex justify-center items-center gap-0.5">
                                 <Droplets className="w-3 text-blue-400" />
                                 {batch.moisture}%
@@ -973,7 +1010,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                       بەرهەمهێنان و بەپیتکردنی دەستەیەکی نوێ
                     </h4>
                     <p className="text-xs text-slate-400 mb-4">
-                      ڕێکخستنی سەرەتای تێکەڵکردنی پاشماوە ی ئۆرگانیک لەگەڵ کوتراوی وشک بە سیستمێکی زۆر ڕیک بۆ دارستانەکان.
+                      ڕێکخستنی سەرەتای تێکەڵکردنی پاشماوە ی ئۆرگانیک لەگەڵ کوتراوی وشک بە سیستەمێکی زۆر ڕیک بۆ دارستانەکان.
                     </p>
 
                     <form onSubmit={handleCreateBatch} className="flex flex-col gap-4">
@@ -983,7 +1020,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                           type="text"
                           value={newBatchName}
                           onChange={(e) => setNewBatchName(e.target.value)}
-                          placeholder="بۆ نموونە: کۆمپۆستی شاخی سەفین دەستەی چوارەم"
+                          placeholder="بۆ نموونە: کۆمپوستی شاخی سەفین دەستەی چوارەم"
                           className="w-full bg-[#08170d] text-white border border-[#10b981]/25 text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-[#cca553] text-right"
                         />
                       </div>
@@ -1004,7 +1041,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                         className="w-full bg-gradient-to-r from-emerald-900 to-[#125327] hover:from-emerald-800 hover:to-green-700 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow cursor-pointer transition-all flex items-center justify-center gap-1"
                       >
                         <Database className="w-4 h-4 text-[#cca553]" />
-                        دەستپێکردنی گەرمی و چاوڕوانکردنی کۆمپۆست
+                        دەستپێکردنی گەرمی و چاوڕوانکردنی کۆمپوست
                       </button>
                     </form>
 
@@ -1024,7 +1061,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                   </div>
 
                   <div className="mt-4 bg-[#08170d] border border-slate-900 p-3 rounded-xl text-[10px] text-slate-500 leading-normal">
-                    پێوەری جۆر: تێکەڵەی کۆمپۆستەکە بەپێی معایەرەکانی ڕێکخراوی نیشتمانی DCA و لێوردبینەوەی فەرمی جێگا کراوە.
+                    پێوەری جۆر: تێکەڵەی کۆمپوستەکە بەپێی معایەرەکانی ڕێکخراوی نیشتمانی DCA و لێوردبینەوەی فەرمی جێگا کراوە.
                   </div>
                 </div>
 
@@ -1044,7 +1081,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                         <TreePine className="w-5 h-5 text-[#cca553]" />
                         سماواری دارستانەکان و کەمەربەندی سەوز
                       </h3>
-                      <p className="text-xs text-slate-400">بۆ زانیاری زیاتر دەربارەی پرۆژەی نەمامەکان، کلیک لە خاڵەکانی سەر نەخشەکە بکەن</p>
+                      <p className="text-xs text-slate-400">بۆ زانیاری زیاتر دەربارەی پرۆژەی نەمامەکان، کرتە لە خاڵەکانی سەر نەخشەکە بکەن</p>
                     </div>
                     <span className="text-[11px] font-mono bg-[#cca553]/15 text-[#cca553] border border-[#cca553]/30 px-3 py-1 rounded-full font-bold">
                       ئامانجی گشتی: ٧,٠٠٠,٠٠٠ درەخت
@@ -1116,7 +1153,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                   <div>
                     <h4 className="text-sm font-bold text-[#cca553] mb-1.5 uppercase tracking-wider flex items-center gap-1.5 border-b border-[#10b981]/10 pb-3">
                       <Compass className="w-4 h-4 text-[#cca553]" />
-                      کۆنترۆڵی زیندەیی: {activeProject.name}
+                      چاودێری زیندەیی: {activeProject.name}
                     </h4>
 
                     <p className="text-xs text-slate-300 leading-relaxed mb-4">
@@ -1128,14 +1165,14 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                       <div className="bg-[#08170d] p-3 rounded-xl border border-slate-850 flex items-center justify-between">
                         <div>
                           <p className="text-[10px] text-slate-400">ژمارەی نەمامی چێندراو</p>
-                          <p className="text-xs text-white font-bold font-mono">{activeProject.treesSupported.toLocaleString()} درخت</p>
+                          <p className="text-xs text-white font-bold font-mono">{activeProject.treesSupported.toLocaleString()} درەخت</p>
                         </div>
                         <TreePine className="w-5 h-5 text-emerald-400" />
                       </div>
 
                       <div className="bg-[#08170d] p-3 rounded-xl border border-slate-850 flex items-center justify-between">
                         <div>
-                          <p className="text-[10px] text-slate-400">بڕی کۆمپۆستی بەکارهێنراو</p>
+                          <p className="text-[10px] text-slate-400">بڕی کۆمپوستی بەکارهێنراو</p>
                           <p className="text-xs text-white font-bold font-mono">{activeProject.compostReceived} تەن ئۆرگانیک</p>
                         </div>
                         <Database className="w-5 h-5 text-[#cca553]" />
@@ -1162,7 +1199,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
 
                   <div className="mt-4 pt-4 border-t border-slate-800">
                     <p className="text-[10px] text-slate-500">
-                      کلیک لە سیمبولەکانی دار لەسەر نەخشەکە بکەن بۆ گۆڕینی زانیاری پاشماوە و کۆنترۆڵەکان.
+                      کرتە لە هێماکانی درەخت لەسەر نەخشەکە بکەن بۆ گۆڕینی زانیاری پاشماوە و کۆنترۆڵەکان.
                     </p>
                   </div>
                 </div>
@@ -1170,7 +1207,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
               </div>
             )}
 
-            {/* TAB 6: PARTNERS & ADVISORS (هاوبەشان و ڕاوێژکاران) */}
+            {/* TAB 6: PARTNERS & ADVISORS (هاوبەشەکان و ڕاوێژکاران) */}
             {activeTab === 'advisors' && (
               <div className="flex flex-col gap-6 text-right">
                 
@@ -1178,10 +1215,10 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                 <div className="bg-[#0b2112] border border-[#10b981]/15 rounded-2xl p-6 shadow-xl">
                   <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
                     <Users className="w-5 h-5 text-[#cca553]" />
-                    ئەندامانی ئەنجومەنی زانستی و هاوبەشانی فەرمی ڕێکخراوەیی
+                    ئەندامانی ئەنجومەنی زانستی و هاوبەشە فەرمییەکان
                   </h3>
                   <p className="text-xs text-slate-400 max-w-3xl leading-relaxed">
-                    تۆڕێکی کەمەربەندی هاوبەش لە نێوان پسپۆڕانی خاکی کوردستان، شۆفێرانی لۆجیستیک، ڕێکخراوی فەرمی دەزگای روانگە و ڕێکخراوی DCA بۆ چاکسازی پێکهاتەی کشتوکاڵی لە هەرێم.
+                    تۆڕی کەمەربەندی سەوز لە پسپۆڕانی خاک و ژینگە، شارەزایانی گواستنەوە و هاوبەشە دامەزراوەییەکان پێکهاتووە؛ بۆ دیاریکردنی ڕێڕەوی زانستی و کارگێڕی پڕۆژەکە.
                   </p>
                 </div>
 
@@ -1218,14 +1255,15 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
                 {/* Submit strategic advisors form */}
                 <div className="bg-[#0b2112] border border-[#cca553]/20 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <h4 className="text-xs font-bold text-[#cca553] uppercase">خوازەی گواستنەوە پێشنیارەکانی پسپۆڕی خاک</h4>
-                    <p className="text-[11px] text-slate-400 mt-1">ئەگەر دەتانەوێت نامەی خۆتان یان زانیارییەکانتان سەبارەت بە کۆمەڵەی ژینگەیی پێشکەش بکەن، تکایە ڕیوەبەر ئاگادار بکەن.</p>
+                    <h4 className="text-xs font-bold text-[#cca553] uppercase">پێشنیار و داواکارییە زانستییەکان</h4>
+                    <p className="text-[11px] text-slate-400 mt-1">بۆ ناردنی پێشنیار یان داواکاریی هاوکاری، تکایە پەیوەندی بە بەڕێوەبەری پڕۆژەوە بکەن.</p>
                   </div>
                   <button 
-                    onClick={() => alert("تکایە پەیوەندی بکەن بە لێژنەی هاوبەشی دەزگای روانگە و dca بۆ پرۆسەی فەرمی هاوکاران.")} 
+                    data-edit-control="true"
+            onClick={() => alert("تکایە پەیوەندی بکەن بە لێژنەی هاوبەشی دەزگای روانگە و dca بۆ پرۆسەی فەرمی هاوکاران.")} 
                     className="bg-[#cca553] hover:bg-amber-600 text-slate-900 font-bold text-xs py-2 px-4 rounded-lg cursor-pointer transition-colors"
                   >
-                    پێشکەشکردنی دڵنیایی
+                    ناردنی داواکاری
                   </button>
                 </div>
 
@@ -1239,7 +1277,7 @@ export default function GreenBeltDashboard({ lang }: { lang: 'en' | 'ar' | 'ku' 
       {/* Bottom Note as requested */}
       <div className="mt-8 border-t border-[#10b981]/15 pt-5 text-center">
         <p className="text-xs text-[#cca553] bg-[#cca553]/10 border border-[#cca553]/25 rounded-xl py-3 px-5 inline-block font-bold">
-          ئەم داشبۆردە بۆ پێشاندانی مۆدێلی کاری کەمەربەندی سەوزە و داتاکان نمایشییەکانی قۆناغی پایلۆتن.
+          ئەم تەختەی چاودێرییە مۆدێلی کاری کەمەربەندی سەوز و داتای نمایشی قۆناغی هەڵسەنگاندن پیشان دەدات.
         </p>
       </div>
 
