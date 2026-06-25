@@ -728,3 +728,1038 @@ a { color: inherit; }
     animation: none !important;
   }
 }
+
+/* =========================================================
+   GREEN BELT — INTELLIGENT OPERATING MODEL
+   ========================================================= */
+
+.model-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 12% 25%,
+      rgba(40, 214, 111, .08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(50, 171, 255, .055),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 18, 10, 1),
+      rgba(7, 24, 13, 1)
+    );
+}
+
+.model-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background:
+    linear-gradient(
+      rgba(86, 214, 141, .08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(86, 214, 141, .08) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #000 18%,
+      #000 82%,
+      transparent
+    );
+}
+
+.operating-model {
+  position: relative;
+  display: grid;
+  gap: 34px;
+  perspective: 1400px;
+}
+
+.model-energy-line {
+  position: absolute;
+  top: 90px;
+  bottom: 90px;
+  inset-inline-start: 41px;
+  width: 2px;
+  z-index: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(70, 239, 134, .5) 12%,
+      rgba(70, 239, 134, .2) 88%,
+      transparent
+    );
+}
+
+.model-energy-line span {
+  position: absolute;
+  inset-inline-start: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  offset-path:
+    path("M 6 0 L 6 1150");
+  background: #9cffbd;
+  box-shadow:
+    0 0 0 7px rgba(81, 231, 137, .09),
+    0 0 24px rgba(81, 231, 137, .8);
+}
+
+.model-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 72px minmax(310px, .92fr) 1.08fr;
+  gap: 26px;
+  min-height: 350px;
+  padding: 28px;
+  border-radius: 28px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  border: 1px solid rgba(111, 239, 158, .1);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 51, 30, .86),
+      rgba(7, 25, 14, .93)
+    );
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, .28),
+    inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.model-stage::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  inset-inline-end: -120px;
+  bottom: -160px;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle,
+      rgba(52, 224, 116, .13),
+      transparent 67%
+    );
+}
+
+.model-stage:hover {
+  border-color: rgba(91, 238, 145, .27);
+  box-shadow:
+    0 38px 110px rgba(0, 0, 0, .36),
+    0 0 55px rgba(62, 218, 120, .06),
+    inset 0 1px rgba(255, 255, 255, .06);
+}
+
+.stage-number {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+
+.stage-number span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  color: #b8ffd0;
+  font-size: 17px;
+  font-weight: 900;
+  border: 1px solid rgba(92, 244, 149, .24);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(78, 224, 132, .15),
+      rgba(78, 224, 132, .04)
+    );
+  box-shadow:
+    0 13px 32px rgba(0, 0, 0, .22),
+    inset 0 1px rgba(255, 255, 255, .08);
+}
+
+.stage-number i {
+  flex: 1;
+  width: 1px;
+  margin-top: 14px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(91, 239, 146, .4),
+      transparent
+    );
+}
+
+.stage-visual {
+  position: relative;
+  min-height: 294px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  overflow: hidden;
+  perspective: 900px;
+  border: 1px solid rgba(104, 233, 152, .1);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(33, 112, 62, .17),
+      transparent 58%
+    ),
+    rgba(3, 17, 8, .74);
+  box-shadow:
+    inset 0 0 60px rgba(50, 219, 112, .05);
+}
+
+.stage-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .24;
+  background:
+    linear-gradient(
+      rgba(85, 234, 140, .1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(85, 234, 140, .1) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+  transform: perspective(430px) rotateX(62deg) scale(1.6);
+  transform-origin: bottom;
+}
+
+.stage-status {
+  position: absolute;
+  z-index: 8;
+  bottom: 14px;
+  inset-inline-start: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  color: #a4b8aa;
+  font-size: 9px;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, .08);
+  background: rgba(5, 24, 12, .78);
+  backdrop-filter: blur(12px);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #56e78c;
+  box-shadow:
+    0 0 0 5px rgba(86, 231, 140, .1),
+    0 0 16px rgba(86, 231, 140, .8);
+  animation: model-live-pulse 1.8s ease-in-out infinite;
+}
+
+.stage-content {
+  position: relative;
+  z-index: 4;
+  align-self: center;
+  padding: 18px 12px;
+}
+
+.stage-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stage-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #6bea9c;
+  border: 1px solid rgba(86, 226, 140, .2);
+  background: rgba(86, 226, 140, .08);
+}
+
+.stage-heading h3 {
+  margin: 0;
+  color: #f5fff8;
+  font-size: clamp(21px, 3vw, 30px);
+  line-height: 1.4;
+}
+
+.stage-content > p {
+  max-width: 570px;
+  margin: 22px 0 28px;
+  color: #9fb3a5;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.stage-metric {
+  max-width: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, .065);
+  background: rgba(255, 255, 255, .025);
+}
+
+.stage-metric small {
+  display: block;
+  color: #718b79;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.stage-metric strong {
+  display: block;
+  margin-top: 4px;
+  color: #baffd1;
+  font-size: 18px;
+}
+
+.stage-metric svg {
+  color: #5ee993;
+}
+
+/* Stage 1 — Smart separation */
+
+.model-scene {
+  position: relative;
+  width: 90%;
+  height: 240px;
+  z-index: 3;
+  transform-style: preserve-3d;
+}
+
+.restaurant-building {
+  position: absolute;
+  top: 46px;
+  inset-inline-start: 15px;
+  width: 90px;
+  height: 105px;
+  display: grid;
+  place-items: center;
+  color: #87f1ae;
+  border-radius: 12px;
+  border: 1px solid rgba(112, 240, 160, .22);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(96, 241, 151, .18) 0 3px,
+      rgba(10, 42, 22, .88) 3px 15px
+    );
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, .3),
+    inset 0 0 28px rgba(73, 233, 133, .08);
+}
+
+.building-signal {
+  position: absolute;
+  top: -18px;
+  width: 42px;
+  height: 22px;
+  border: 1px solid rgba(95, 242, 151, .35);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  animation: building-signal 2s ease-out infinite;
+}
+
+.signal-two {
+  animation-delay: .8s;
+}
+
+.sorting-stream {
+  position: absolute;
+  top: 88px;
+  inset-inline-start: 96px;
+  width: 125px;
+  height: 46px;
+  border-bottom: 2px solid rgba(83, 226, 138, .23);
+}
+
+.sorting-stream span {
+  position: absolute;
+  inset-inline-start: 0;
+  color: #75e9a2;
+}
+
+.smart-bin {
+  position: absolute;
+  top: 65px;
+  inset-inline-end: 12px;
+  width: 72px;
+  height: 105px;
+  display: grid;
+  place-items: center;
+  color: #8bf4b3;
+  border-radius: 14px 14px 10px 10px;
+  border: 1px solid rgba(112, 240, 160, .24);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(40, 124, 70, .68),
+      rgba(10, 42, 22, .95)
+    );
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, .3),
+    0 0 28px rgba(69, 232, 129, .08);
+}
+
+.smart-bin i {
+  position: absolute;
+  top: -8px;
+  width: 82px;
+  height: 10px;
+  border-radius: 5px;
+  background: #4ab97a;
+}
+
+.smart-bin span {
+  position: absolute;
+  inset: 18px;
+  border-radius: 10px;
+  border: 1px dashed rgba(111, 242, 160, .24);
+  animation: bin-scan 2.5s ease-in-out infinite;
+}
+
+.scan-floor {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  bottom: 16px;
+  inset-inline-end: -25px;
+  border-radius: 50%;
+  border: 1px solid rgba(67, 235, 131, .3);
+  background: rgba(52, 211, 112, .04);
+  box-shadow: 0 0 38px rgba(52, 211, 112, .08);
+  animation: floor-scan 3s ease-in-out infinite;
+}
+
+/* Stage 2 — Intelligent collection */
+
+.route-map {
+  position: absolute;
+  inset: 18px 12px;
+}
+
+.route-point {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #69efa0;
+  box-shadow:
+    0 0 0 7px rgba(69, 232, 132, .09),
+    0 0 18px rgba(69, 232, 132, .6);
+}
+
+.point-a {
+  bottom: 28px;
+  inset-inline-start: 10px;
+}
+
+.point-b {
+  top: 46px;
+  left: 50%;
+}
+
+.point-c {
+  bottom: 32px;
+  inset-inline-end: 8px;
+}
+
+.route-line {
+  position: absolute;
+  height: 2px;
+  width: 46%;
+  top: 51%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(93, 237, 149, .58),
+      transparent
+    );
+  transform-origin: left;
+}
+
+.line-a {
+  inset-inline-start: 20px;
+  transform: rotate(-25deg);
+}
+
+.line-b {
+  inset-inline-end: 18px;
+  transform: rotate(27deg);
+}
+
+.smart-truck {
+  position: absolute;
+  z-index: 5;
+  top: 94px;
+  left: 50%;
+  color: #7aefa7;
+  filter:
+    drop-shadow(0 15px 18px rgba(0, 0, 0, .36))
+    drop-shadow(0 0 13px rgba(62, 232, 127, .23));
+}
+
+.truck-signal {
+  position: absolute;
+  width: 33px;
+  height: 18px;
+  top: -15px;
+  left: 8px;
+  border: 1px solid rgba(87, 236, 142, .4);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+  animation: truck-signal 1.7s ease-out infinite;
+}
+
+.weight-module {
+  position: absolute;
+  bottom: 13px;
+  inset-inline-start: 42%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a9f8c5;
+  padding: 8px 11px;
+  border-radius: 11px;
+  border: 1px solid rgba(88, 231, 142, .16);
+  background: rgba(8, 33, 17, .84);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.map-radar {
+  position: absolute;
+  top: 4px;
+  inset-inline-end: 4px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid rgba(84, 235, 141, .18);
+}
+
+.map-radar i {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(84, 235, 141, .15);
+}
+
+.map-radar i:nth-child(2) {
+  inset: 20px;
+}
+
+.map-radar i:nth-child(3) {
+  inset: 32px;
+  background: #5bec91;
+  box-shadow: 0 0 16px #5bec91;
+}
+
+/* Stage 3 — Compost intelligence */
+
+.compost-chamber {
+  position: absolute;
+  width: 155px;
+  height: 135px;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 22px 22px 12px 12px;
+  border: 1px solid rgba(108, 239, 157, .2);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26, 89, 49, .44),
+      rgba(7, 31, 16, .96)
+    );
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, .38),
+    inset 0 0 35px rgba(59, 222, 119, .07);
+}
+
+.organic-layer {
+  position: absolute;
+  inset-inline: 10px;
+  height: 26px;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      90deg,
+      #425928,
+      #7c7e38,
+      #365625
+    );
+  opacity: .82;
+}
+
+.layer-one {
+  bottom: 12px;
+}
+
+.layer-two {
+  bottom: 38px;
+  transform: scaleX(.88);
+}
+
+.layer-three {
+  bottom: 64px;
+  transform: scaleX(.74);
+}
+
+.heat-wave {
+  position: absolute;
+  width: 18px;
+  height: 55px;
+  bottom: 65px;
+  left: 42%;
+  border-radius: 50%;
+  border-inline-start: 2px solid rgba(255, 164, 77, .5);
+  filter: blur(1px);
+}
+
+.wave-two {
+  left: 58%;
+}
+
+.temperature-core {
+  position: absolute;
+  z-index: 7;
+  top: 15px;
+  inset-inline-end: 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #ffb46e;
+  padding: 9px 11px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 170, 91, .18);
+  background: rgba(45, 23, 10, .7);
+  box-shadow: 0 0 22px rgba(255, 135, 57, .08);
+}
+
+.temperature-core strong {
+  font-size: 15px;
+}
+
+.bio-ring {
+  position: absolute;
+  width: 215px;
+  height: 78px;
+  bottom: 16px;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(87, 236, 143, .2);
+  transform: translateX(-50%);
+  animation: bio-ring 4.5s linear infinite;
+}
+
+.bio-ring-two {
+  width: 270px;
+  height: 110px;
+  bottom: 0;
+  border-style: dashed;
+  animation-direction: reverse;
+  animation-duration: 7s;
+}
+
+.microbe-particles i {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9cf5bb;
+  box-shadow: 0 0 12px #59df89;
+}
+
+.microbe-particles i:nth-child(1) {
+  top: 36px;
+  left: 17%;
+}
+
+.microbe-particles i:nth-child(2) {
+  top: 67px;
+  left: 27%;
+}
+
+.microbe-particles i:nth-child(3) {
+  top: 25px;
+  left: 44%;
+}
+
+.microbe-particles i:nth-child(4) {
+  top: 52px;
+  left: 61%;
+}
+
+.microbe-particles i:nth-child(5) {
+  top: 30px;
+  left: 78%;
+}
+
+.microbe-particles i:nth-child(6) {
+  bottom: 27px;
+  left: 12%;
+}
+
+.microbe-particles i:nth-child(7) {
+  bottom: 44px;
+  left: 36%;
+}
+
+.microbe-particles i:nth-child(8) {
+  bottom: 31px;
+  left: 67%;
+}
+
+.microbe-particles i:nth-child(9) {
+  bottom: 55px;
+  left: 87%;
+}
+
+/* Stage 4 — Green growth */
+
+.digital-soil {
+  position: absolute;
+  width: 235px;
+  height: 75px;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(71, 154, 86, .36),
+      rgba(9, 38, 18, .88) 62%
+    );
+  border: 1px solid rgba(91, 233, 144, .17);
+  box-shadow:
+    0 0 45px rgba(55, 218, 115, .09),
+    inset 0 0 30px rgba(72, 224, 128, .08);
+}
+
+.digital-soil span {
+  position: absolute;
+  width: 2px;
+  height: 42px;
+  bottom: 30px;
+  background:
+    linear-gradient(
+      to top,
+      #57e38a,
+      transparent
+    );
+}
+
+.digital-soil span:nth-child(1) {
+  left: 24%;
+  transform: rotate(-20deg);
+}
+
+.digital-soil span:nth-child(2) {
+  left: 43%;
+  transform: rotate(-7deg);
+}
+
+.digital-soil span:nth-child(3) {
+  left: 60%;
+  transform: rotate(10deg);
+}
+
+.digital-soil span:nth-child(4) {
+  left: 78%;
+  transform: rotate(24deg);
+}
+
+.growth-tree {
+  position: absolute;
+  z-index: 6;
+  bottom: 60px;
+  left: 50%;
+  color: #69e89a;
+  transform-origin: bottom;
+  filter:
+    drop-shadow(0 0 22px rgba(65, 226, 126, .28));
+}
+
+.growth-sprouts span {
+  position: absolute;
+  z-index: 6;
+  bottom: 46px;
+  color: #89efa9;
+}
+
+.growth-sprouts span:first-child {
+  left: 19%;
+}
+
+.growth-sprouts span:last-child {
+  right: 20%;
+}
+
+.data-satellite {
+  position: absolute;
+  z-index: 7;
+  top: 11px;
+  inset-inline-start: 21px;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  color: #8bf3b0;
+  border-radius: 50%;
+  border: 1px solid rgba(92, 235, 146, .2);
+  background: rgba(11, 46, 24, .72);
+}
+
+.satellite-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px dashed rgba(83, 234, 140, .28);
+  animation: bio-ring 6s linear infinite;
+}
+
+.growth-chart {
+  position: absolute;
+  top: 15px;
+  inset-inline-end: 19px;
+  width: 82px;
+  height: 70px;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  padding: 9px;
+  border-radius: 12px;
+  border: 1px solid rgba(89, 232, 142, .12);
+  background: rgba(7, 31, 16, .69);
+}
+
+.growth-chart i {
+  flex: 1;
+  border-radius: 4px 4px 1px 1px;
+  background:
+    linear-gradient(
+      to top,
+      #2f9c5b,
+      #75eda2
+    );
+  animation: chart-rise 2.8s ease-in-out infinite alternate;
+}
+
+.growth-chart i:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.growth-chart i:nth-child(3) {
+  animation-delay: .4s;
+}
+
+.growth-chart i:nth-child(4) {
+  animation-delay: .6s;
+}
+
+@keyframes model-live-pulse {
+  0%,
+  100% {
+    opacity: .45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes building-signal {
+  0% {
+    opacity: 0;
+    transform: scale(.55);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes bin-scan {
+  0%,
+  100% {
+    transform: scaleY(.25);
+    opacity: .2;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: .75;
+  }
+}
+
+@keyframes floor-scan {
+  0%,
+  100% {
+    transform: scale(.7);
+    opacity: .25;
+  }
+
+  50% {
+    transform: scale(1.16);
+    opacity: .7;
+  }
+}
+
+@keyframes truck-signal {
+  from {
+    opacity: .9;
+    transform: scale(.55);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes bio-ring {
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes chart-rise {
+  from {
+    opacity: .62;
+    transform: scaleY(.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 980px) {
+  .model-stage {
+    grid-template-columns: 58px 1fr;
+  }
+
+  .stage-content {
+    grid-column: 2;
+  }
+
+  .stage-visual {
+    grid-column: 2;
+  }
+
+  .stage-number {
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .operating-model {
+    gap: 24px;
+  }
+
+  .model-energy-line {
+    display: none;
+  }
+
+  .model-stage {
+    display: block;
+    min-height: auto;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .stage-number {
+    position: absolute;
+    top: 17px;
+    inset-inline-end: 17px;
+  }
+
+  .stage-number span {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    font-size: 14px;
+  }
+
+  .stage-number i {
+    display: none;
+  }
+
+  .stage-visual {
+    min-height: 265px;
+    margin-top: 0;
+  }
+
+  .stage-content {
+    padding: 25px 3px 4px;
+  }
+
+  .stage-heading {
+    padding-inline-end: 55px;
+  }
+
+  .stage-heading h3 {
+    font-size: 21px;
+  }
+
+  .stage-content > p {
+    font-size: 13px;
+  }
+
+  .model-scene {
+    width: 96%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .model-energy-line span,
+  .live-dot,
+  .building-signal,
+  .smart-bin span,
+  .scan-floor,
+  .truck-signal,
+  .bio-ring,
+  .satellite-ring,
+  .growth-chart i {
+    animation: none !important;
+  }
+}

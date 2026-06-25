@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import TechHeroVisual from '../components/website/TechHeroVisual';
+import OperatingModelVisual from '../components/website/OperatingModelVisual';
 
 type Language = 'ku' | 'ar' | 'en';
 
@@ -291,7 +292,20 @@ export default function App() {
 
         <section id="about" className="section surface"><div className="container"><SectionHeading kicker={t.problem.kicker} title={t.problem.title} body={t.problem.body} /><div className="grid three">{t.problem.cards.map((item, index) => { const Icon = problemIcons[index]; return <article className="card" key={item.title}><span className="icon"><Icon size={23} /></span><h3>{item.title}</h3><p>{item.body}</p></article>; })}</div></div></section>
 
-        <section id="model" className="section"><div className="container"><SectionHeading kicker={t.model.kicker} title={t.model.title} body={t.model.body} /><div className="grid four">{t.model.steps.map((item, index) => { const Icon = stepIcons[index]; return <article className="step" key={item.title}><b>0{index + 1}</b><span className="icon"><Icon size={23} /></span><h3>{item.title}</h3><p>{item.body}</p></article>; })}</div></div></section>
+        <section id="model" className="section model-section">
+          <div className="container">
+            <SectionHeading
+              kicker={t.model.kicker}
+              title={t.model.title}
+              body={t.model.body}
+            />
+
+            <OperatingModelVisual
+              language={language}
+              steps={t.model.steps}
+            />
+          </div>
+        </section>
 
         <section id="pilot" className="section pilot"><div className="container pilot-grid"><div><SectionHeading kicker={t.pilot.kicker} title={t.pilot.title} body={t.pilot.body} /><div className="pilot-chip"><Sprout size={19} /><span>{language === 'ku' ? 'هەڵسەنگاندنی کۆنترۆڵکراو · هەولێر · بەڵگە لە پێشەوە' : language === 'ar' ? 'تقييم منظم · أربيل · الدليل أولاً' : 'Controlled assessment · Erbil focus · Evidence first'}</span></div></div><div className="timeline">{t.pilot.phases.map((item, index) => <article key={item.value}><div className="timeline-number">{index + 1}</div><div><small>{item.label}</small><h3>{item.value}</h3><p>{item.body}</p></div></article>)}</div></div></section>
 
