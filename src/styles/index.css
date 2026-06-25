@@ -1763,3 +1763,46 @@ a { color: inherit; }
     animation: none !important;
   }
 }
+
+/* Viewer mode — strictly read-only UI */
+
+.viewer-read-only {
+  position: relative;
+}
+
+.viewer-read-only input,
+.viewer-read-only textarea,
+.viewer-read-only select,
+.viewer-read-only [contenteditable="true"],
+.viewer-read-only button[type="submit"],
+.viewer-read-only [data-edit-control="true"],
+.viewer-read-only [data-action="add"],
+.viewer-read-only [data-action="create"],
+.viewer-read-only [data-action="edit"],
+.viewer-read-only [data-action="update"],
+.viewer-read-only [data-action="save"],
+.viewer-read-only [data-action="delete"] {
+  display: none !important;
+}
+
+.viewer-read-only [draggable="true"] {
+  pointer-events: none !important;
+  user-select: none;
+}
+
+.viewer-read-only::before {
+  content: "دۆخی تەنها بینین";
+  position: fixed;
+  z-index: 120;
+  bottom: 18px;
+  right: 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #bce8ff;
+  font-size: 10px;
+  font-weight: 800;
+  border: 1px solid rgba(56, 189, 248, .22);
+  background: rgba(7, 31, 48, .88);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .25);
+}

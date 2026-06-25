@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import { AuthProvider, useAuth } from './auth/AuthProvider';
+import ViewerReadOnlyBoundary from './auth/ViewerReadOnlyBoundary';
 import LoginPage from './pages/LoginPage';
 import PublicWebsite from './pages/PublicWebsite';
 
@@ -51,7 +52,12 @@ function DashboardPage({
 }: {
   navigate: (path: RoutePath) => void;
 }) {
-  const { user, signOutUser } = useAuth();
+  const {
+    user,
+    role,
+    isViewer,
+    signOutUser,
+  } = useAuth();
 
   const handleSignOut = async () => {
     await signOutUser();
@@ -109,7 +115,33 @@ function DashboardPage({
       </header>
 
       <main className="mx-auto w-full max-w-7xl p-4 lg:p-6">
-        <GreenBeltDashboard lang="ku" />
+        {isViewer ? (
+          <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-sky-400/20 bg-sky-400/5 px-4 py-3">
+            <div>
+              <strong className="block text-sm text-sky-200">
+                دۆخی بینەر
+              </strong>
+
+              <span className="mt-1 block text-xs text-slate-400">
+                تەنها مافی بینینت هەیە؛ هیچ گۆڕانکارییەک ڕێگەپێدراو نییە.
+              </span>
+            </div>
+
+            <span className="rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1 text-xs font-bold text-sky-200">
+              تەنها بینین
+            </span>
+          </div>
+        ) : null}
+
+        <ViewerReadOnlyBoundary enabled={isViewer}>
+          <GreenBeltDashboard lang="ku" />
+        </ViewerReadOnlyBoundary>
+
+        {!role ? (
+          <div className="mt-5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm text-amber-200">
+            دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
+          </div>
+        ) : null}
       </main>
     </div>
   );
