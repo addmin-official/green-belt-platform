@@ -294,9 +294,6 @@ export default function App() {
           id="about"
           className="section surface problem-section"
         >
-          <div className="problem-ambient problem-ambient-a" />
-          <div className="problem-ambient problem-ambient-b" />
-
           <div className="container problem-section-inner">
             <SectionHeading
               kicker={t.problem.kicker}
