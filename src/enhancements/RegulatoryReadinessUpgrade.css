@@ -1,0 +1,157 @@
+.regulatory-readiness {
+  width: min(1180px, calc(100% - 32px));
+  margin: 34px auto 0;
+  padding: 42px;
+  border: 1px solid rgba(86, 214, 141, .14);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(86, 214, 141, .08), transparent 30%),
+    linear-gradient(145deg, rgba(13, 43, 25, .98), rgba(5, 20, 12, .99));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .03);
+}
+
+.regulatory-readiness__intro {
+  max-width: 900px;
+}
+
+.regulatory-readiness__kicker {
+  color: #9ee7bb;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.regulatory-readiness__intro h2 {
+  margin: 12px 0 14px;
+  color: #f4fbf6;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.45;
+}
+
+.regulatory-readiness__intro p,
+.regulatory-readiness__roles-copy p,
+.regulatory-readiness__footer p {
+  margin: 0;
+  color: #a8b9ad;
+  font-size: 13px;
+  line-height: 1.95;
+}
+
+.regulatory-readiness__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.regulatory-readiness__grid article {
+  min-height: 220px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .025);
+}
+
+.regulatory-readiness__number {
+  color: rgba(255, 255, 255, .2);
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.regulatory-readiness__grid h3,
+.regulatory-readiness__roles h3 {
+  margin: 18px 0 10px;
+  color: #eef8f1;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.regulatory-readiness__grid p {
+  margin: 0;
+  color: #93a69a;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.regulatory-readiness__roles {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 24px;
+  margin-top: 20px;
+  padding: 24px;
+  border: 1px solid rgba(214, 181, 111, .16);
+  border-radius: 20px;
+  background: rgba(214, 181, 111, .035);
+}
+
+.regulatory-readiness__roles-copy > span {
+  color: #e3c47a;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.regulatory-readiness__role-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.regulatory-readiness__role-list span {
+  padding: 12px 13px;
+  border: 1px solid rgba(86, 214, 141, .12);
+  border-radius: 12px;
+  color: #c8dacd;
+  background: rgba(86, 214, 141, .045);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.regulatory-readiness__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+.regulatory-readiness__footer a {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border: 1px solid rgba(86, 214, 141, .2);
+  border-radius: 10px;
+  color: #a8edc0;
+  background: rgba(86, 214, 141, .07);
+  font-size: 10px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+  .regulatory-readiness__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .regulatory-readiness__roles {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .regulatory-readiness {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .regulatory-readiness__grid,
+  .regulatory-readiness__role-list {
+    grid-template-columns: 1fr;
+  }
+
+  .regulatory-readiness__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
