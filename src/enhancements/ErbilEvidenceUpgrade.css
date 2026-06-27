@@ -1,0 +1,111 @@
+.erbil-live-map {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 18px;
+  background: #0b1f14;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .03);
+}
+
+.erbil-live-map iframe {
+  display: block;
+  width: 100%;
+  min-height: 460px;
+  border: 0;
+  filter: saturate(.88) contrast(1.02) brightness(.92);
+}
+
+.erbil-live-map__overlay {
+  position: absolute;
+  inset-inline: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 15px;
+  background: rgba(5, 23, 13, .92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .25);
+}
+
+.erbil-live-map__overlay > div {
+  display: grid;
+  gap: 3px;
+}
+
+.erbil-live-map__overlay span {
+  color: #86d9a6;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.erbil-live-map__overlay strong {
+  color: #f3faf5;
+  font-size: 13px;
+}
+
+.erbil-live-map__overlay small {
+  color: #8fa297;
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+}
+
+.erbil-live-map__overlay a {
+  flex: 0 0 auto;
+  padding: 9px 11px;
+  border: 1px solid rgba(86, 214, 141, .25);
+  border-radius: 10px;
+  color: #a8edc0;
+  background: rgba(86, 214, 141, .08);
+  font-size: 9px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.erbil-live-map__overlay a:hover {
+  border-color: rgba(86, 214, 141, .45);
+  background: rgba(86, 214, 141, .13);
+}
+
+.erbil-evidence__heading {
+  max-width: 940px;
+}
+
+.erbil-evidence__heading h3 {
+  max-width: 900px;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.5;
+}
+
+.erbil-evidence__source-card h4 {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.erbil-evidence__source-card p,
+.erbil-evidence__boundary-card p,
+.erbil-evidence__decision-strip p,
+.erbil-evidence__table-row > span {
+  font-size: 11px;
+  line-height: 1.95;
+}
+
+@media (max-width: 700px) {
+  .erbil-live-map,
+  .erbil-live-map iframe {
+    min-height: 390px;
+  }
+
+  .erbil-live-map__overlay {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .erbil-live-map__overlay a {
+    width: fit-content;
+  }
+}
