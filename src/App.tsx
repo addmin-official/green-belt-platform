@@ -15,6 +15,7 @@ import {
 
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import ViewerReadOnlyBoundary from './auth/ViewerReadOnlyBoundary';
+import BrandNotice from './components/legal/BrandNotice';
 import LoginPage from './pages/LoginPage';
 import PublicWebsite from './pages/PublicWebsite';
 
@@ -79,7 +80,7 @@ function DashboardPage({
 
             <div>
               <h1 className="text-lg font-black text-white">
-                پلاتفۆرمی کەمەربەندی سەوز
+                پلاتفۆرمی کەمەربەندی سەوز™
               </h1>
 
               <p className="text-xs font-bold text-emerald-400">
@@ -142,6 +143,8 @@ function DashboardPage({
             ئاستی دەسەڵاتی ئەم هەژمارە دیاری نەکراوە.
           </div>
         ) : null}
+
+        <BrandNotice compact />
       </main>
     </div>
   );
@@ -200,6 +203,7 @@ function Application() {
   return (
     <>
       <PublicWebsite />
+      <BrandNotice />
 
       <button
         type="button"
