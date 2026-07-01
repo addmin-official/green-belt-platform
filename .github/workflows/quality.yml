@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         mode: [demo, pilot, live]
 
@@ -20,25 +21,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11.9.0
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: npm
+          cache-dependency-path: package.json
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm install --no-audit --no-fund
 
       - name: Typecheck
-        run: pnpm run typecheck
+        run: npm run typecheck
 
       - name: Build
-        run: pnpm run build
+        run: npm run build
         env:
           VITE_PLATFORM_MODE: ${{ matrix.mode }}
           VITE_FIREBASE_API_KEY: ci-placeholder
