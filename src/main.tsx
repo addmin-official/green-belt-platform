@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import AppErrorBoundary from './components/system/AppErrorBoundary';
 import { PLATFORM_MODE } from './config/platformMode';
 import './styles/index.css';
 import './styles/platform-mode.css';
@@ -13,6 +14,8 @@ document.documentElement.dataset.platformMode = PLATFORM_MODE;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AppErrorBoundary>
+      <App />
+    </AppErrorBoundary>
   </StrictMode>,
 );
