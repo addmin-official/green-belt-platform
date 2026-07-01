@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import CommitteeReadinessSuite from '../governance/CommitteeReadinessSuite';
+import ClaimDisciplineLoader from './ClaimDisciplineLoader';
 import { CURRENT_PLATFORM_MODE, PLATFORM_MODE } from '../../config/platformMode';
 
 type Props = {
@@ -11,6 +12,7 @@ export default function PlatformModeGate({ children }: Props) {
 
   return (
     <div className="space-y-5" dir="rtl">
+      <ClaimDisciplineLoader />
       <CommitteeReadinessSuite />
 
       <section className="rounded-2xl border border-emerald-400/20 bg-emerald-400/5 px-5 py-4 shadow-xl">
