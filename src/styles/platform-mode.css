@@ -1,0 +1,28 @@
+html[data-platform-mode='pilot'] #green-belt-dashboard-root,
+html[data-platform-mode='live'] #green-belt-dashboard-root {
+  display: none !important;
+}
+
+html[data-platform-mode='pilot'] main::before,
+html[data-platform-mode='live'] main::before {
+  display: block;
+  margin-bottom: 20px;
+  padding: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  background: rgba(14, 116, 144, 0.08);
+  color: #bae6fd;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.9;
+  text-align: right;
+  direction: rtl;
+}
+
+html[data-platform-mode='pilot'] main::before {
+  content: 'دۆخی تاقیکردنەوە چالاکە. داشبۆردی نموونە داخراوە تا داتای ڕاستەقینەی تاقیکردنەوە پەیوەست بکرێت.';
+}
+
+html[data-platform-mode='live'] main::before {
+  content: 'دۆخی ڕاستەقینە چالاکە. تەنها داتای پشتڕاستکراو ڕێگەی پیشاندان و ڕاپۆرتکردنی هەیە.';
+}

@@ -2,41 +2,22 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    function signedIn() {
-      return request.auth != null;
-    }
-
+    function signedIn() { return request.auth != null; }
     function userData() {
-      return get(
-        /databases/$(database)/documents/users/$(request.auth.uid)
-      ).data;
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
     }
-
     function hasActiveRole(role) {
-      return signedIn()
-        && userData().active == true
-        && userData().role == role;
+      return signedIn() && userData().active == true && userData().role == role;
     }
-
-    function isAdmin() {
-      return hasActiveRole("admin");
+    function hasAnyRole(roles) {
+      return signedIn() && userData().active == true && userData().role in roles;
     }
-
-    function isOperator() {
-      return hasActiveRole("operator");
-    }
-
-    function isViewer() {
-      return hasActiveRole("viewer");
-    }
-
+    function isAdmin() { return hasActiveRole('admin'); }
     function canReadPlatform() {
-      return isAdmin() || isOperator() || isViewer();
+      return hasAnyRole(['admin','operator','collection_officer','facility_operator','qa_manager','laboratory','viewer']);
     }
-
-    function canManagePlatform() {
-      return isAdmin() || isOperator();
+    function canOperate() {
+      return hasAnyRole(['admin','operator','collection_officer','facility_operator']);
     }
 
     match /publicContent/{document=**} {
@@ -45,54 +26,93 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow read: if signedIn()
-        && (
-          request.auth.uid == userId
-          || isAdmin()
-        );
-
+      allow read: if signedIn() && (request.auth.uid == userId || isAdmin());
       allow create, update, delete: if isAdmin();
     }
 
     match /restaurants/{document=**} {
       allow read: if canReadPlatform();
-      allow create, update: if canManagePlatform();
+      allow create, update: if hasAnyRole(['admin','operator']);
       allow delete: if isAdmin();
     }
 
-    match /collections/{document=**} {
+    match /collectionEvents/{document=**} {
       allow read: if canReadPlatform();
-      allow create, update: if canManagePlatform();
-      allow delete: if isAdmin();
+      allow create: if hasAnyRole(['admin','operator','collection_officer']) && request.resource.data.weightKg > 0;
+      allow update: if hasAnyRole(['admin','operator']);
+      allow delete: if false;
+    }
+
+    match /manifests/{document=**} {
+      allow read: if canReadPlatform();
+      allow create, update: if canOperate();
+      allow delete: if false;
+    }
+
+    match /facilityReceipts/{document=**} {
+      allow read: if canReadPlatform();
+      allow create, update: if hasAnyRole(['admin','operator','facility_operator']);
+      allow delete: if false;
     }
 
     match /compostBatches/{document=**} {
       allow read: if canReadPlatform();
-      allow create, update: if canManagePlatform();
-      allow delete: if isAdmin();
+      allow create: if hasAnyRole(['admin','operator','facility_operator']);
+      allow update: if hasAnyRole(['admin','operator','facility_operator','qa_manager']);
+      allow delete: if false;
+    }
+
+    match /processReadings/{document=**} {
+      allow read: if canReadPlatform();
+      allow create: if hasAnyRole(['admin','operator','facility_operator']);
+      allow update, delete: if false;
+    }
+
+    match /samples/{document=**} {
+      allow read: if canReadPlatform();
+      allow create, update: if hasAnyRole(['admin','operator','facility_operator','qa_manager','laboratory']);
+      allow delete: if false;
+    }
+
+    match /laboratoryResults/{document=**} {
+      allow read: if canReadPlatform();
+      allow create, update: if hasAnyRole(['admin','laboratory']);
+      allow delete: if false;
+    }
+
+    match /qaReleases/{document=**} {
+      allow read: if canReadPlatform();
+      allow create: if hasAnyRole(['admin','qa_manager']) && request.resource.data.locked == true;
+      allow update, delete: if false;
+    }
+
+    match /auditLogs/{document=**} {
+      allow read: if hasAnyRole(['admin','operator','qa_manager']);
+      allow create: if canOperate() || hasAnyRole(['qa_manager','laboratory']);
+      allow update, delete: if false;
+    }
+
+    match /incidents/{document=**} {
+      allow read: if canReadPlatform();
+      allow create, update: if canOperate() || hasActiveRole('qa_manager');
+      allow delete: if false;
     }
 
     match /impactProjects/{document=**} {
       allow read: if canReadPlatform();
-      allow create, update: if canManagePlatform();
+      allow create, update: if hasAnyRole(['admin','operator']);
       allow delete: if isAdmin();
     }
 
     match /pilotMetrics/{document=**} {
       allow read: if canReadPlatform();
-      allow create, update: if canManagePlatform();
+      allow create, update: if hasAnyRole(['admin','operator']);
       allow delete: if isAdmin();
     }
 
     match /announcements/{document=**} {
       allow read: if canReadPlatform();
       allow create, update, delete: if isAdmin();
-    }
-
-    match /auditLogs/{document=**} {
-      allow read: if canReadPlatform();
-      allow create: if canManagePlatform();
-      allow update, delete: if false;
     }
 
     match /{document=**} {

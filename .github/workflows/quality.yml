@@ -1,0 +1,45 @@
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        mode: [demo, pilot, live]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package.json
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_PLATFORM_MODE: ${{ matrix.mode }}
+          VITE_FIREBASE_API_KEY: ci-placeholder
+          VITE_FIREBASE_AUTH_DOMAIN: green-belt-platform.firebaseapp.com
+          VITE_FIREBASE_PROJECT_ID: green-belt-platform
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '598295785891'
+          VITE_FIREBASE_APP_ID: 1:598295785891:web:d04c2d05d414521f34ea16
