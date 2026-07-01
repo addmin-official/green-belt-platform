@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import CommitteeReadinessSuite from '../governance/CommitteeReadinessSuite';
 import { CURRENT_PLATFORM_MODE, PLATFORM_MODE } from '../../config/platformMode';
 
 type Props = {
@@ -10,6 +11,8 @@ export default function PlatformModeGate({ children }: Props) {
 
   return (
     <div className="space-y-5" dir="rtl">
+      <CommitteeReadinessSuite />
+
       <section className="rounded-2xl border border-emerald-400/20 bg-emerald-400/5 px-5 py-4 shadow-xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
