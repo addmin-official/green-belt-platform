@@ -16,6 +16,7 @@ import {
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import ViewerReadOnlyBoundary from './auth/ViewerReadOnlyBoundary';
 import BrandNotice from './components/legal/BrandNotice';
+import PlatformModeGate from './components/system/PlatformModeGate';
 import LoginPage from './pages/LoginPage';
 import PublicWebsite from './pages/PublicWebsite';
 
@@ -134,9 +135,11 @@ function DashboardPage({
           </div>
         ) : null}
 
-        <ViewerReadOnlyBoundary enabled={isViewer}>
-          <GreenBeltDashboard lang="ku" />
-        </ViewerReadOnlyBoundary>
+        <PlatformModeGate>
+          <ViewerReadOnlyBoundary enabled={isViewer}>
+            <GreenBeltDashboard lang="ku" />
+          </ViewerReadOnlyBoundary>
+        </PlatformModeGate>
 
         {!role ? (
           <div className="mt-5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm text-amber-200">
