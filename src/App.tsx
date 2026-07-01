@@ -15,6 +15,7 @@ import {
 
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import ViewerReadOnlyBoundary from './auth/ViewerReadOnlyBoundary';
+import AdminControlCenter from './components/admin/AdminControlCenter';
 import BrandNotice from './components/legal/BrandNotice';
 import PlatformModeGate from './components/system/PlatformModeGate';
 import LoginPage from './pages/LoginPage';
@@ -148,6 +149,7 @@ function DashboardPage({
         ) : null}
 
         <BrandNotice compact />
+        <AdminControlCenter />
       </main>
     </div>
   );
