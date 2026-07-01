@@ -1,8 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useMemo } from 'react';
 
 type MapProject = {
   id: string;
@@ -14,237 +10,71 @@ type MapProject = {
   survivalRate: number;
 };
 
-type GoogleProjectsMapProps<T extends MapProject> = {
+type Props<T extends MapProject> = {
   projects: T[];
   activeProjectId: string;
   onSelect: (project: T) => void;
 };
 
-let googleMapsPromise: Promise<void> | null = null;
-
-function loadGoogleMaps(apiKey: string): Promise<void> {
-  if (window.google?.maps) {
-    return Promise.resolve();
-  }
-
-  if (googleMapsPromise) {
-    return googleMapsPromise;
-  }
-
-  googleMapsPromise = new Promise((resolve, reject) => {
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[data-green-belt-google-maps="true"]',
-    );
-
-    if (existingScript) {
-      existingScript.addEventListener('load', () => resolve(), {
-        once: true,
-      });
-
-      existingScript.addEventListener(
-        'error',
-        () => reject(new Error('Google Maps failed to load.')),
-        { once: true },
-      );
-
-      return;
-    }
-
-    const script = document.createElement('script');
-
-    script.src =
-      `https://maps.googleapis.com/maps/api/js` +
-      `?key=${encodeURIComponent(apiKey)}` +
-      `&v=weekly&language=ku&region=IQ`;
-
-    script.async = true;
-    script.defer = true;
-    script.dataset.greenBeltGoogleMaps = 'true';
-
-    script.addEventListener('load', () => resolve(), {
-      once: true,
-    });
-
-    script.addEventListener(
-      'error',
-      () => reject(new Error('Google Maps failed to load.')),
-      { once: true },
-    );
-
-    document.head.appendChild(script);
-  });
-
-  return googleMapsPromise;
-}
-
 export default function GoogleProjectsMap<T extends MapProject>({
   projects,
   activeProjectId,
   onSelect,
-}: GoogleProjectsMapProps<T>) {
-  const mapElementRef = useRef<HTMLDivElement>(null);
-  const [error, setError] = useState<string | null>(null);
+}: Props<T>) {
+  const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0];
 
-  useEffect(() => {
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
-    if (!apiKey) {
-      setError('Google Maps API key دیاری نەکراوە.');
-      return;
+  const source = useMemo(() => {
+    if (!activeProject) {
+      return 'https://www.openstreetmap.org/export/embed.html?bbox=43.3%2C35.2%2C45.9%2C37.4&layer=mapnik';
     }
 
-    let disposed = false;
-    const listeners: google.maps.MapsEventListener[] = [];
+    const span = 0.35;
+    const left = activeProject.lng - span;
+    const bottom = activeProject.lat - span;
+    const right = activeProject.lng + span;
+    const top = activeProject.lat + span;
 
-    const initializeMap = async () => {
-      try {
-        await loadGoogleMaps(apiKey);
-
-        if (
-          disposed ||
-          !mapElementRef.current ||
-          projects.length === 0
-        ) {
-          return;
-        }
-
-        const map = new google.maps.Map(mapElementRef.current, {
-          center: {
-            lat: 36.2,
-            lng: 44.2,
-          },
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.HYBRID,
-          fullscreenControl: true,
-          streetViewControl: false,
-          mapTypeControl: true,
-          zoomControl: true,
-          gestureHandling: 'cooperative',
-        });
-
-        const bounds = new google.maps.LatLngBounds();
-        const infoWindow = new google.maps.InfoWindow();
-
-        projects.forEach((project) => {
-          const isActive = project.id === activeProjectId;
-
-          const marker = new google.maps.Marker({
-            map,
-            position: {
-              lat: project.lat,
-              lng: project.lng,
-            },
-            title: project.name,
-            animation: isActive
-              ? google.maps.Animation.BOUNCE
-              : undefined,
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: isActive ? '#d4aa4d' : '#10b981',
-              fillOpacity: 1,
-              strokeColor: '#ffffff',
-              strokeWeight: 2,
-              scale: isActive ? 10 : 8,
-            },
-          });
-
-          bounds.extend({
-            lat: project.lat,
-            lng: project.lng,
-          });
-
-          listeners.push(
-            marker.addListener('click', () => {
-              onSelect(project);
-
-              infoWindow.setContent(`
-                <div
-                  dir="rtl"
-                  style="
-                    min-width: 220px;
-                    color: #102017;
-                    font-family: Arial, sans-serif;
-                  "
-                >
-                  <strong style="font-size:14px;">
-                    ${project.name}
-                  </strong>
-
-                  <div style="margin-top:8px;font-size:12px;">
-                    ژمارەی درەخت:
-                    ${project.treesSupported.toLocaleString()}
-                  </div>
-
-                  <div style="margin-top:4px;font-size:12px;">
-                    کۆمپوست:
-                    ${project.compostReceived} تەن
-                  </div>
-
-                  <div style="margin-top:4px;font-size:12px;">
-                    ڕێژەی مانەوە:
-                    ${project.survivalRate}٪
-                  </div>
-                </div>
-              `);
-
-              infoWindow.open({
-                map,
-                anchor: marker,
-              });
-            }),
-          );
-        });
-
-        map.fitBounds(bounds, 70);
-
-        google.maps.event.addListenerOnce(
-          map,
-          'bounds_changed',
-          () => {
-            if ((map.getZoom() ?? 0) > 10) {
-              map.setZoom(10);
-            }
-          },
-        );
-      } catch (mapError) {
-        console.error(mapError);
-
-        if (!disposed) {
-          setError(
-            'نەخشەکە بار نەبوو؛ API key و سنووردارکردنەکانی بپشکنە.',
-          );
-        }
-      }
-    };
-
-    void initializeMap();
-
-    return () => {
-      disposed = true;
-
-      listeners.forEach((listener) => {
-        listener.remove();
-      });
-    };
-  }, [
-    projects,
-    activeProjectId,
-    onSelect,
-  ]);
-
-  if (error) {
-    return (
-      <div className="flex min-h-[360px] items-center justify-center rounded-2xl border border-red-400/20 bg-red-950/20 p-6 text-center text-sm text-red-200">
-        {error}
-      </div>
-    );
-  }
+    return `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${activeProject.lat}%2C${activeProject.lng}`;
+  }, [activeProject]);
 
   return (
-    <div
-      ref={mapElementRef}
-      className="min-h-[420px] w-full overflow-hidden rounded-2xl border border-emerald-500/20"
-      aria-label="نەخشەی پڕۆژەکانی کەمەربەندی سەوز"
-    />
+    <section className="overflow-hidden rounded-2xl border border-emerald-500/20 bg-[#07180d]">
+      <div className="flex flex-col gap-2 border-b border-emerald-500/15 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <strong className="block text-xs font-black text-emerald-200">
+            نەخشەی ڕاستەقینەی شوێنەکانی پڕۆژە
+          </strong>
+          <span className="mt-1 block text-[10px] text-slate-500">
+            OpenStreetMap — بەردەست بەبێ کلیلی تایبەت
+          </span>
+        </div>
+        <span className="w-fit rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[10px] font-black text-emerald-200">
+          نەخشەی چالاک
+        </span>
+      </div>
+
+      <iframe
+        title="نەخشەی پڕۆژەکانی کەمەربەندی سەوز"
+        src={source}
+        className="h-[420px] w-full border-0"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+
+      <div className="grid gap-2 border-t border-emerald-500/15 p-3 sm:grid-cols-2 lg:grid-cols-4">
+        {projects.map((project) => (
+          <button
+            key={project.id}
+            type="button"
+            onClick={() => onSelect(project)}
+            className={project.id === activeProjectId
+              ? 'rounded-xl border border-[#cca553]/45 bg-[#cca553]/10 px-3 py-2 text-right text-[10px] font-bold text-[#e5c66e]'
+              : 'rounded-xl border border-emerald-500/15 bg-black/10 px-3 py-2 text-right text-[10px] font-bold text-slate-400 transition hover:border-emerald-400/35'}
+          >
+            {project.name}
+          </button>
+        ))}
+      </div>
+    </section>
   );
 }
