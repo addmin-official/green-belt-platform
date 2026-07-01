@@ -12,10 +12,7 @@ import {
   signOut,
   type User,
 } from 'firebase/auth';
-import {
-  doc,
-  getDoc,
-} from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 import {
   firebaseAuth,
@@ -23,8 +20,14 @@ import {
   initializeFirebaseAuth,
   isFirebaseConfigured,
 } from '../lib/firebase';
+import {
+  hasPermission,
+  isPlatformRole,
+  type Permission,
+  type PlatformRole,
+} from '../security/permissions';
 
-export type UserRole = 'admin' | 'operator' | 'viewer' | null;
+export type UserRole = PlatformRole | null;
 
 type AuthContextValue = {
   user: User | null;
@@ -35,6 +38,7 @@ type AuthContextValue = {
   isAdmin: boolean;
   isViewer: boolean;
   canEdit: boolean;
+  can: (permission: Permission) => boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signOutUser: () => Promise<void>;
 };
@@ -42,33 +46,15 @@ type AuthContextValue = {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 async function loadUserRole(user: User): Promise<UserRole> {
-  if (!firestoreDb) {
-    return null;
-  }
+  if (!firestoreDb) return null;
 
-  const snapshot = await getDoc(
-    doc(firestoreDb, 'users', user.uid),
-  );
-
-  if (!snapshot.exists()) {
-    return null;
-  }
+  const snapshot = await getDoc(doc(firestoreDb, 'users', user.uid));
+  if (!snapshot.exists()) return null;
 
   const data = snapshot.data();
+  if (data.active !== true || !isPlatformRole(data.role)) return null;
 
-  if (data.active !== true) {
-    return null;
-  }
-
-  if (
-    data.role === 'admin' ||
-    data.role === 'operator' ||
-    data.role === 'viewer'
-  ) {
-    return data.role;
-  }
-
-  return null;
+  return data.role;
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -91,17 +77,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const initialize = async () => {
       try {
         await initializeFirebaseAuth();
-
-        if (!active) {
-          return;
-        }
+        if (!active) return;
 
         unsubscribe = onAuthStateChanged(
           auth,
           async (nextUser) => {
-            if (!active) {
-              return;
-            }
+            if (!active) return;
 
             setUser(nextUser);
             setRole(null);
@@ -116,14 +97,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
             try {
               const nextRole = await loadUserRole(nextUser);
-
-              if (active) {
-                setRole(nextRole);
-              }
+              if (active) setRole(nextRole);
             } catch {
-              if (active) {
-                setRole(null);
-              }
+              if (active) setRole(null);
             } finally {
               if (active) {
                 setRoleLoading(false);
@@ -132,10 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             }
           },
           () => {
-            if (!active) {
-              return;
-            }
-
+            if (!active) return;
             setUser(null);
             setRole(null);
             setRoleLoading(false);
@@ -169,48 +142,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       configured: isFirebaseConfigured,
       isAdmin: role === 'admin',
       isViewer: role === 'viewer',
-      canEdit: role === 'admin' || role === 'operator',
-
+      canEdit: role !== null && role !== 'viewer' && role !== 'laboratory',
+      can: (permission) => hasPermission(role, permission),
       signIn: async (email, password) => {
         const auth = firebaseAuth;
+        if (!auth) throw new Error('Firebase configuration is incomplete.');
 
-        if (!auth) {
-          throw new Error('Firebase configuration is incomplete.');
-        }
-
-        await signInWithEmailAndPassword(
-          auth,
-          email.trim(),
-          password,
-        );
+        await signInWithEmailAndPassword(auth, email.trim(), password);
       },
-
       signOutUser: async () => {
         const auth = firebaseAuth;
-
-        if (!auth) {
-          return;
-        }
-
-        await signOut(auth);
+        if (auth) await signOut(auth);
       },
     }),
     [user, role, loading, roleLoading],
   );
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth(): AuthContextValue {
   const context = useContext(AuthContext);
-
-  if (!context) {
-    throw new Error('useAuth must be used inside AuthProvider.');
-  }
-
+  if (!context) throw new Error('useAuth must be used inside AuthProvider.');
   return context;
 }
